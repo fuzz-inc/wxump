@@ -1,0 +1,3 @@
+[submodule "libump"]
+	path = libump
+	url = https://github.com/fuzz-inc/libump.git
