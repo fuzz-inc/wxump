@@ -1,0 +1,473 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		264387931DF07C8000604DE7 /* LayoutRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 264387911DF07C8000604DE7 /* LayoutRenderer.cpp */; };
+		4B2F7CA11E07E83A00F51A0B /* ClientPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B2F7C9F1E07E83A00F51A0B /* ClientPlayer.cpp */; };
+		4BA65D931DA633BB008BC581 /* ResultWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA65D911DA633BB008BC581 /* ResultWindow.cpp */; };
+		4BA65D961DA65C8D008BC581 /* TakuWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA65D941DA65C8D008BC581 /* TakuWindow.cpp */; };
+		4BAAF96E1DC20C6500A74C05 /* Conversion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BAAF96C1DC20C6500A74C05 /* Conversion.cpp */; };
+		4BD8C5441E091E1500732076 /* TakuInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8C5421E091E1500732076 /* TakuInfo.cpp */; };
+		4BEC90BB1DE7FBEA00701853 /* ControlWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BEC90B91DE7FBEA00701853 /* ControlWindow.cpp */; };
+		DA2FFD401D9CDEFA00C38A00 /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA2FFD3E1D9CDEFA00C38A00 /* Config.cpp */; };
+		DA2FFD431D9CFEF100C38A00 /* ConfigDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA2FFD411D9CFEF100C38A00 /* ConfigDialog.cpp */; };
+		DA6D70271D9E37AE00FC46CF /* LogWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA6D70251D9E37AE00FC46CF /* LogWindow.cpp */; };
+		DAACF2331D893182009BECDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAACF2321D893182009BECDE /* Assets.xcassets */; };
+		DAACF2361D893182009BECDE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAACF2341D893182009BECDE /* MainMenu.xib */; };
+		DAACF24A1D8931BD009BECDE /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DAACF23E1D8931BD009BECDE /* Application.cpp */; };
+		DAACF24B1D8931BD009BECDE /* Client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DAACF2401D8931BD009BECDE /* Client.cpp */; };
+		DAACF24C1D8931BD009BECDE /* HaiImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DAACF2421D8931BD009BECDE /* HaiImage.cpp */; };
+		DAACF24D1D8931BD009BECDE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DAACF2451D8931BD009BECDE /* main.cpp */; };
+		DAACF24E1D8931BD009BECDE /* MainFrame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DAACF2461D8931BD009BECDE /* MainFrame.cpp */; };
+		DAACF24F1D8931BD009BECDE /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DAACF2481D8931BD009BECDE /* Player.cpp */; };
+		DAACF2511D8936C9009BECDE /* libump.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAACF2501D8936C9009BECDE /* libump.a */; };
+		DAACF2531D8936DE009BECDE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAACF2521D8936DE009BECDE /* AudioToolbox.framework */; };
+		DAACF2551D8936E5009BECDE /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAACF2541D8936E5009BECDE /* Carbon.framework */; };
+		DAACF2571D8936EA009BECDE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAACF2561D8936EA009BECDE /* Cocoa.framework */; };
+		DAACF2591D8936F1009BECDE /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAACF2581D8936F1009BECDE /* IOKit.framework */; };
+		DAACF25B1D8936F8009BECDE /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DAACF25A1D8936F8009BECDE /* libiconv.tbd */; };
+		DAACF25D1D8936FF009BECDE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DAACF25C1D8936FF009BECDE /* libz.tbd */; };
+		DAACF2631D893A77009BECDE /* libwx_osx_cocoau-3.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAACF25F1D893A77009BECDE /* libwx_osx_cocoau-3.1.a */; };
+		DAACF2641D893A77009BECDE /* libwxjpeg-3.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAACF2601D893A77009BECDE /* libwxjpeg-3.1.a */; };
+		DAACF2651D893A77009BECDE /* libwxpng-3.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAACF2611D893A77009BECDE /* libwxpng-3.1.a */; };
+		DAACF2661D893A77009BECDE /* libwxtiff-3.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAACF2621D893A77009BECDE /* libwxtiff-3.1.a */; };
+		DAACF2681D894742009BECDE /* asset in Resources */ = {isa = PBXBuildFile; fileRef = DAACF2671D894742009BECDE /* asset */; };
+		DAACF26B1D89490C009BECDE /* Server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DAACF2691D89490C009BECDE /* Server.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2643878D1DF0755800604DE7 /* HaiObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HaiObject.hpp; sourceTree = "<group>"; };
+		264387911DF07C8000604DE7 /* LayoutRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LayoutRenderer.cpp; sourceTree = "<group>"; };
+		264387921DF07C8000604DE7 /* LayoutRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LayoutRenderer.hpp; sourceTree = "<group>"; };
+		4B2F7C9F1E07E83A00F51A0B /* ClientPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClientPlayer.cpp; sourceTree = "<group>"; };
+		4B2F7CA01E07E83A00F51A0B /* ClientPlayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ClientPlayer.hpp; sourceTree = "<group>"; };
+		4BA65D911DA633BB008BC581 /* ResultWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ResultWindow.cpp; sourceTree = "<group>"; };
+		4BA65D921DA633BB008BC581 /* ResultWindow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ResultWindow.hpp; sourceTree = "<group>"; };
+		4BA65D941DA65C8D008BC581 /* TakuWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TakuWindow.cpp; sourceTree = "<group>"; };
+		4BA65D951DA65C8D008BC581 /* TakuWindow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TakuWindow.hpp; sourceTree = "<group>"; };
+		4BAAF96C1DC20C6500A74C05 /* Conversion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Conversion.cpp; sourceTree = "<group>"; };
+		4BAAF96D1DC20C6500A74C05 /* Conversion.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Conversion.hpp; sourceTree = "<group>"; };
+		4BAE3D3C1DED97F700E69A9F /* Layout.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Layout.hpp; sourceTree = "<group>"; };
+		4BD8C5421E091E1500732076 /* TakuInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TakuInfo.cpp; sourceTree = "<group>"; };
+		4BD8C5431E091E1500732076 /* TakuInfo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TakuInfo.hpp; sourceTree = "<group>"; };
+		4BEC90B91DE7FBEA00701853 /* ControlWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlWindow.cpp; sourceTree = "<group>"; };
+		4BEC90BA1DE7FBEA00701853 /* ControlWindow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ControlWindow.hpp; sourceTree = "<group>"; };
+		DA2FFD3E1D9CDEFA00C38A00 /* Config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Config.cpp; sourceTree = "<group>"; };
+		DA2FFD3F1D9CDEFA00C38A00 /* Config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config.hpp; sourceTree = "<group>"; };
+		DA2FFD411D9CFEF100C38A00 /* ConfigDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConfigDialog.cpp; sourceTree = "<group>"; };
+		DA2FFD421D9CFEF100C38A00 /* ConfigDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConfigDialog.hpp; sourceTree = "<group>"; };
+		DA6D70251D9E37AE00FC46CF /* LogWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LogWindow.cpp; sourceTree = "<group>"; };
+		DA6D70261D9E37AE00FC46CF /* LogWindow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LogWindow.hpp; sourceTree = "<group>"; };
+		DAACF2291D893182009BECDE /* wxump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wxump.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAACF2321D893182009BECDE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DAACF2351D893182009BECDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		DAACF2371D893182009BECDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DAACF23E1D8931BD009BECDE /* Application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Application.cpp; sourceTree = "<group>"; };
+		DAACF23F1D8931BD009BECDE /* Application.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Application.hpp; sourceTree = "<group>"; };
+		DAACF2401D8931BD009BECDE /* Client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Client.cpp; sourceTree = "<group>"; };
+		DAACF2411D8931BD009BECDE /* Client.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Client.hpp; sourceTree = "<group>"; };
+		DAACF2421D8931BD009BECDE /* HaiImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HaiImage.cpp; sourceTree = "<group>"; };
+		DAACF2431D8931BD009BECDE /* HaiImage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HaiImage.hpp; sourceTree = "<group>"; };
+		DAACF2441D8931BD009BECDE /* header.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = header.hpp; sourceTree = "<group>"; };
+		DAACF2451D8931BD009BECDE /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		DAACF2461D8931BD009BECDE /* MainFrame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainFrame.cpp; sourceTree = "<group>"; };
+		DAACF2471D8931BD009BECDE /* MainFrame.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MainFrame.hpp; sourceTree = "<group>"; };
+		DAACF2481D8931BD009BECDE /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
+		DAACF2491D8931BD009BECDE /* Player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
+		DAACF2501D8936C9009BECDE /* libump.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libump.a; path = ../DerivedData/wxump/Build/Products/Debug/libump.a; sourceTree = "<group>"; };
+		DAACF2521D8936DE009BECDE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		DAACF2541D8936E5009BECDE /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		DAACF2561D8936EA009BECDE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		DAACF2581D8936F1009BECDE /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		DAACF25A1D8936F8009BECDE /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		DAACF25C1D8936FF009BECDE /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		DAACF25F1D893A77009BECDE /* libwx_osx_cocoau-3.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwx_osx_cocoau-3.1.a"; path = "../../../external/mac/wxWidgets/lib/libwx_osx_cocoau-3.1.a"; sourceTree = "<group>"; };
+		DAACF2601D893A77009BECDE /* libwxjpeg-3.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwxjpeg-3.1.a"; path = "../../../external/mac/wxWidgets/lib/libwxjpeg-3.1.a"; sourceTree = "<group>"; };
+		DAACF2611D893A77009BECDE /* libwxpng-3.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwxpng-3.1.a"; path = "../../../external/mac/wxWidgets/lib/libwxpng-3.1.a"; sourceTree = "<group>"; };
+		DAACF2621D893A77009BECDE /* libwxtiff-3.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwxtiff-3.1.a"; path = "../../../external/mac/wxWidgets/lib/libwxtiff-3.1.a"; sourceTree = "<group>"; };
+		DAACF2671D894742009BECDE /* asset */ = {isa = PBXFileReference; lastKnownFileType = folder; name = asset; path = ../../../asset; sourceTree = "<group>"; };
+		DAACF2691D89490C009BECDE /* Server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Server.cpp; sourceTree = "<group>"; };
+		DAACF26A1D89490C009BECDE /* Server.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Server.hpp; sourceTree = "<group>"; };
+		DAF777861DA26B5C005B4CAC /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = ../../../libump/external/mac/openssl/lib/libcrypto.a; sourceTree = "<group>"; };
+		DAF777871DA26B5C005B4CAC /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = ../../../libump/external/mac/openssl/lib/libssl.a; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DAACF2261D893182009BECDE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAACF2631D893A77009BECDE /* libwx_osx_cocoau-3.1.a in Frameworks */,
+				DAACF2641D893A77009BECDE /* libwxjpeg-3.1.a in Frameworks */,
+				DAACF2651D893A77009BECDE /* libwxpng-3.1.a in Frameworks */,
+				DAACF2661D893A77009BECDE /* libwxtiff-3.1.a in Frameworks */,
+				DAACF25D1D8936FF009BECDE /* libz.tbd in Frameworks */,
+				DAACF25B1D8936F8009BECDE /* libiconv.tbd in Frameworks */,
+				DAACF2591D8936F1009BECDE /* IOKit.framework in Frameworks */,
+				DAACF2571D8936EA009BECDE /* Cocoa.framework in Frameworks */,
+				DAACF2551D8936E5009BECDE /* Carbon.framework in Frameworks */,
+				DAACF2531D8936DE009BECDE /* AudioToolbox.framework in Frameworks */,
+				DAACF2511D8936C9009BECDE /* libump.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DAACF2201D893182009BECDE = {
+			isa = PBXGroup;
+			children = (
+				DAACF2671D894742009BECDE /* asset */,
+				DAACF25E1D893704009BECDE /* framework */,
+				DAACF22A1D893182009BECDE /* Products */,
+				DAACF23D1D8931BD009BECDE /* wxump */,
+				DAACF22B1D893182009BECDE /* xcode */,
+			);
+			sourceTree = "<group>";
+		};
+		DAACF22A1D893182009BECDE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DAACF2291D893182009BECDE /* wxump.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DAACF22B1D893182009BECDE /* xcode */ = {
+			isa = PBXGroup;
+			children = (
+				DAACF2321D893182009BECDE /* Assets.xcassets */,
+				DAACF2341D893182009BECDE /* MainMenu.xib */,
+				DAACF2371D893182009BECDE /* Info.plist */,
+			);
+			name = xcode;
+			path = wxump;
+			sourceTree = "<group>";
+		};
+		DAACF23D1D8931BD009BECDE /* wxump */ = {
+			isa = PBXGroup;
+			children = (
+				DAACF23E1D8931BD009BECDE /* Application.cpp */,
+				DAACF23F1D8931BD009BECDE /* Application.hpp */,
+				DAACF2401D8931BD009BECDE /* Client.cpp */,
+				DAACF2411D8931BD009BECDE /* Client.hpp */,
+				4B2F7C9F1E07E83A00F51A0B /* ClientPlayer.cpp */,
+				4B2F7CA01E07E83A00F51A0B /* ClientPlayer.hpp */,
+				DA2FFD3E1D9CDEFA00C38A00 /* Config.cpp */,
+				DA2FFD3F1D9CDEFA00C38A00 /* Config.hpp */,
+				DA2FFD411D9CFEF100C38A00 /* ConfigDialog.cpp */,
+				DA2FFD421D9CFEF100C38A00 /* ConfigDialog.hpp */,
+				4BEC90B91DE7FBEA00701853 /* ControlWindow.cpp */,
+				4BEC90BA1DE7FBEA00701853 /* ControlWindow.hpp */,
+				4BAAF96C1DC20C6500A74C05 /* Conversion.cpp */,
+				4BAAF96D1DC20C6500A74C05 /* Conversion.hpp */,
+				DAACF2421D8931BD009BECDE /* HaiImage.cpp */,
+				DAACF2431D8931BD009BECDE /* HaiImage.hpp */,
+				2643878D1DF0755800604DE7 /* HaiObject.hpp */,
+				DAACF2441D8931BD009BECDE /* header.hpp */,
+				4BAE3D3C1DED97F700E69A9F /* Layout.hpp */,
+				264387911DF07C8000604DE7 /* LayoutRenderer.cpp */,
+				264387921DF07C8000604DE7 /* LayoutRenderer.hpp */,
+				DA6D70251D9E37AE00FC46CF /* LogWindow.cpp */,
+				DA6D70261D9E37AE00FC46CF /* LogWindow.hpp */,
+				DAACF2451D8931BD009BECDE /* main.cpp */,
+				DAACF2461D8931BD009BECDE /* MainFrame.cpp */,
+				DAACF2471D8931BD009BECDE /* MainFrame.hpp */,
+				DAACF2481D8931BD009BECDE /* Player.cpp */,
+				DAACF2491D8931BD009BECDE /* Player.hpp */,
+				4BA65D911DA633BB008BC581 /* ResultWindow.cpp */,
+				4BA65D921DA633BB008BC581 /* ResultWindow.hpp */,
+				DAACF2691D89490C009BECDE /* Server.cpp */,
+				DAACF26A1D89490C009BECDE /* Server.hpp */,
+				4BD8C5421E091E1500732076 /* TakuInfo.cpp */,
+				4BD8C5431E091E1500732076 /* TakuInfo.hpp */,
+				4BA65D941DA65C8D008BC581 /* TakuWindow.cpp */,
+				4BA65D951DA65C8D008BC581 /* TakuWindow.hpp */,
+			);
+			name = wxump;
+			path = ../../../wxump;
+			sourceTree = "<group>";
+		};
+		DAACF25E1D893704009BECDE /* framework */ = {
+			isa = PBXGroup;
+			children = (
+				DAF777861DA26B5C005B4CAC /* libcrypto.a */,
+				DAF777871DA26B5C005B4CAC /* libssl.a */,
+				DAACF2501D8936C9009BECDE /* libump.a */,
+				DAACF25F1D893A77009BECDE /* libwx_osx_cocoau-3.1.a */,
+				DAACF2601D893A77009BECDE /* libwxjpeg-3.1.a */,
+				DAACF2611D893A77009BECDE /* libwxpng-3.1.a */,
+				DAACF2621D893A77009BECDE /* libwxtiff-3.1.a */,
+				DAACF2521D8936DE009BECDE /* AudioToolbox.framework */,
+				DAACF2541D8936E5009BECDE /* Carbon.framework */,
+				DAACF2561D8936EA009BECDE /* Cocoa.framework */,
+				DAACF2581D8936F1009BECDE /* IOKit.framework */,
+				DAACF25A1D8936F8009BECDE /* libiconv.tbd */,
+				DAACF25C1D8936FF009BECDE /* libz.tbd */,
+			);
+			name = framework;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DAACF2281D893182009BECDE /* wxump */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DAACF23A1D893182009BECDE /* Build configuration list for PBXNativeTarget "wxump" */;
+			buildPhases = (
+				DAACF2251D893182009BECDE /* Sources */,
+				DAACF2261D893182009BECDE /* Frameworks */,
+				DAACF2271D893182009BECDE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = wxump;
+			productName = wxump;
+			productReference = DAACF2291D893182009BECDE /* wxump.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DAACF2211D893182009BECDE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "YASUI Kentarow";
+				TargetAttributes = {
+					DAACF2281D893182009BECDE = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = DAACF2241D893182009BECDE /* Build configuration list for PBXProject "wxump" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DAACF2201D893182009BECDE;
+			productRefGroup = DAACF22A1D893182009BECDE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DAACF2281D893182009BECDE /* wxump */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DAACF2271D893182009BECDE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAACF2681D894742009BECDE /* asset in Resources */,
+				DAACF2331D893182009BECDE /* Assets.xcassets in Resources */,
+				DAACF2361D893182009BECDE /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DAACF2251D893182009BECDE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4BD8C5441E091E1500732076 /* TakuInfo.cpp in Sources */,
+				4BEC90BB1DE7FBEA00701853 /* ControlWindow.cpp in Sources */,
+				4BA65D931DA633BB008BC581 /* ResultWindow.cpp in Sources */,
+				4BAAF96E1DC20C6500A74C05 /* Conversion.cpp in Sources */,
+				DA2FFD431D9CFEF100C38A00 /* ConfigDialog.cpp in Sources */,
+				DAACF24B1D8931BD009BECDE /* Client.cpp in Sources */,
+				DA2FFD401D9CDEFA00C38A00 /* Config.cpp in Sources */,
+				4BA65D961DA65C8D008BC581 /* TakuWindow.cpp in Sources */,
+				264387931DF07C8000604DE7 /* LayoutRenderer.cpp in Sources */,
+				DAACF24C1D8931BD009BECDE /* HaiImage.cpp in Sources */,
+				DA6D70271D9E37AE00FC46CF /* LogWindow.cpp in Sources */,
+				DAACF26B1D89490C009BECDE /* Server.cpp in Sources */,
+				DAACF24F1D8931BD009BECDE /* Player.cpp in Sources */,
+				DAACF24D1D8931BD009BECDE /* main.cpp in Sources */,
+				4B2F7CA11E07E83A00F51A0B /* ClientPlayer.cpp in Sources */,
+				DAACF24A1D8931BD009BECDE /* Application.cpp in Sources */,
+				DAACF24E1D8931BD009BECDE /* MainFrame.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DAACF2341D893182009BECDE /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DAACF2351D893182009BECDE /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DAACF2381D893182009BECDE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/../../../wxump/header.hpp";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../../../libump/external/mac/openssl/include";
+				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../../../external/mac/wxWidgets/lib",
+					"$(PROJECT_DIR)/../../../libump/external/mac/openssl/lib",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../../../libump $(PROJECT_DIR)/../../../external/mac/wxWidgets/include/wx-3.1 $(PROJECT_DIR)/../../../external/mac/wxWidgets/lib/wx/include/osx_cocoa-unicode-static-3.1 $(PROJECT_DIR)/../../..";
+			};
+			name = Debug;
+		};
+		DAACF2391D893182009BECDE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/../../../wxump/header.hpp";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../../../libump/external/mac/openssl/include";
+				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../../../external/mac/wxWidgets/lib",
+					"$(PROJECT_DIR)/../../../libump/external/mac/openssl/lib",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../../../libump $(PROJECT_DIR)/../../../external/mac/wxWidgets/include/wx-3.1 $(PROJECT_DIR)/../../../external/mac/wxWidgets/lib/wx/include/osx_cocoa-unicode-static-3.1 $(PROJECT_DIR)/../../..";
+			};
+			name = Release;
+		};
+		DAACF23B1D893182009BECDE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = wxump/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_LDFLAGS = (
+					"$(PROJECT_DIR)/../../../libump/external/mac/openssl/lib/libcrypto.a",
+					"$(PROJECT_DIR)/../../../libump/external/mac/openssl/lib/libssl.a",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.fuzz.wxump;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		DAACF23C1D893182009BECDE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = wxump/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_LDFLAGS = (
+					"$(PROJECT_DIR)/../../../libump/external/mac/openssl/lib/libcrypto.a",
+					"$(PROJECT_DIR)/../../../libump/external/mac/openssl/lib/libssl.a",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.fuzz.wxump;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DAACF2241D893182009BECDE /* Build configuration list for PBXProject "wxump" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAACF2381D893182009BECDE /* Debug */,
+				DAACF2391D893182009BECDE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DAACF23A1D893182009BECDE /* Build configuration list for PBXNativeTarget "wxump" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAACF23B1D893182009BECDE /* Debug */,
+				DAACF23C1D893182009BECDE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DAACF2211D893182009BECDE /* Project object */;
+}

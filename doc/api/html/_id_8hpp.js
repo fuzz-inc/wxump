@@ -1,0 +1,27 @@
+var _id_8hpp =
+[
+    [ "ID_TOP", "_id_8hpp.html#aef5e32057c679301c30e60408f55cd9ba9882176097357d2330286626f69ca0b3", null ],
+    [ "MENU_TOP", "_id_8hpp.html#aef5e32057c679301c30e60408f55cd9bacd42bad742097c29c2e7f4478ee11433", null ],
+    [ "MENU_GAME_CONNECT", "_id_8hpp.html#aef5e32057c679301c30e60408f55cd9ba9b7f27f71e555cda939b89cdadeb3736", null ],
+    [ "MENU_GAME_BOT", "_id_8hpp.html#aef5e32057c679301c30e60408f55cd9badcdc7ed2eb3bfef52a8768abfd92918f", null ],
+    [ "MENU_GAME_CONFIG", "_id_8hpp.html#aef5e32057c679301c30e60408f55cd9ba7e0fadc2f17244fd3be8ce35b9272f9b", null ],
+    [ "MENU_GAME_QUIT", "_id_8hpp.html#aef5e32057c679301c30e60408f55cd9ba63bb75a6f6912b714fa063ec87fd2051", null ],
+    [ "MENU_VIEW_HAI_SIZE", "_id_8hpp.html#aef5e32057c679301c30e60408f55cd9bacce2ac744385d6d9e66d60b061cdde5e", null ],
+    [ "MENU_VIEW_HAI_SIZE_SMALL", "_id_8hpp.html#aef5e32057c679301c30e60408f55cd9ba70c6131578711c1ea3cf90df45a1b792", null ],
+    [ "MENU_VIEW_HAI_SIZE_MIDDLE", "_id_8hpp.html#aef5e32057c679301c30e60408f55cd9ba296cf21848ea2bbf45cca33e22ce972d", null ],
+    [ "MENU_VIEW_HAI_SIZE_LARGE", "_id_8hpp.html#aef5e32057c679301c30e60408f55cd9baf412e8ab27de3b69529d1c633e88f689", null ],
+    [ "MENU_WINDOW_LOG", "_id_8hpp.html#aef5e32057c679301c30e60408f55cd9baa9579c414ed5d01f727aa9032792a1a1", null ],
+    [ "MENU_BOTTOM", "_id_8hpp.html#aef5e32057c679301c30e60408f55cd9ba85a284763e6824e42f25ec2bebfcf802", null ],
+    [ "BUTTON_TOP", "_id_8hpp.html#aef5e32057c679301c30e60408f55cd9ba2a4d398d9e2671d99199be1d7a32c20a", null ],
+    [ "BUTTON_AUTO_AGARI", "_id_8hpp.html#aef5e32057c679301c30e60408f55cd9bad2d4527b01e0328c05e1cbc7492e5252", null ],
+    [ "BUTTON_AUTO_NAKI_CANCEL", "_id_8hpp.html#aef5e32057c679301c30e60408f55cd9ba05f5a35d96fd119a679c5ef26536e5e7", null ],
+    [ "BUTTON_AUTO_SAY_TENPAI", "_id_8hpp.html#aef5e32057c679301c30e60408f55cd9bad3ac38a0257cd87d42ed2ee428ac976b", null ],
+    [ "BUTTON_RICHI", "_id_8hpp.html#aef5e32057c679301c30e60408f55cd9baa1f2510b8e6edbfa6103105951899bf2", null ],
+    [ "BUTTON_AGARI", "_id_8hpp.html#aef5e32057c679301c30e60408f55cd9ba095204e50dcc5b11eafe77bfca64dc7f", null ],
+    [ "BUTTON_PON", "_id_8hpp.html#aef5e32057c679301c30e60408f55cd9ba2496ccb398e330497d5099ae989a7a1e", null ],
+    [ "BUTTON_CHI", "_id_8hpp.html#aef5e32057c679301c30e60408f55cd9ba0cb53538a867adeedbb3da60f63980e9", null ],
+    [ "BUTTON_KAN", "_id_8hpp.html#aef5e32057c679301c30e60408f55cd9ba1ec3ed2dcbb9b2844523d9465c49a9c5", null ],
+    [ "BUTTON_CANCEL", "_id_8hpp.html#aef5e32057c679301c30e60408f55cd9bab85c753eef1332a8cf20a1a57d3c30e9", null ],
+    [ "BUTTON_BOTTOM", "_id_8hpp.html#aef5e32057c679301c30e60408f55cd9ba55633323f287ef2b3fa863ac4d196209", null ],
+    [ "ID_BOTTOM", "_id_8hpp.html#aef5e32057c679301c30e60408f55cd9baca1f22806d3472b0622f02f712c4a91e", null ]
+];
