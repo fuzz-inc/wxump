@@ -1,0 +1,8 @@
+# Xcode
+DerivedData/
+project.xcworkspace/
+xcuserdata/
+*.xcscmblueprint
+
+# Mac
+external/build/mac/work/
