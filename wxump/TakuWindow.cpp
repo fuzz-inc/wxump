@@ -107,7 +107,7 @@ void TakuWindow::onChangeLayout(const LayoutRenderer& renderer) {
 void TakuWindow::onSay(const ump::Command& command) {
   auto seat = ump::Command::StringToSeat(command.getArg(0).c_str());
   players_.at(seat)->
-    setComment(Conversion::getSayString(command.getArg(1).c_str()));
+    setComment(Conversion::GetSayString(command.getArg(1).c_str()));
 }
 /***********************************************************************//**
 	@brief 全てのプレイヤーのコメントをリセット
@@ -153,7 +153,7 @@ void TakuWindow::onMouse(wxMouseEvent& event) {
   LayoutRect rect(LayoutPos(LayoutValue(), TakuInfo::GetHeight()),
                   Player::GetSize());
   if(clientPlayer_) {
-    for(int i = 0, n = int(players_.size() - 1); i < n; i++) {
+    for(int i = 0, n = static_cast<int>(players_.size() - 1); i < n; i++) {
       rect.pos.y += rect.size.height;
     }
     auto renderRect = renderer.getRect(rect);
@@ -177,7 +177,7 @@ void TakuWindow::onPaint(wxPaintEvent &event) {
   for(size_t i = 1, n = players_.size(); i <= n; i++) {
     auto player = players_.at((getClient()->getSeat() + i) % n);
     player->onPaint(renderer, pos);
-    pos.y += Player::GetHeight();
+    pos.y += Player::GetSize().height;
   }
   renderer.endRender();
 }
@@ -200,20 +200,15 @@ void TakuWindow::onGameStart() {
 	@brief アガリ時の処理
 ***************************************************************************/
 void TakuWindow::onAgari(const ump::Command& command) {
-  for(auto player : players_) {
-    if(player->isMjPlayer(client_->getPlayer(command.getArg(0).c_str()).
-                          get())) {
-      result_->setPlayer(player);
-    }
-  }
+  result_->setPlayer(client_->getPlayer(command.getArg(0).c_str()));
 }
 /***********************************************************************//**
 	@brief 卓のサイズを求める関数
   @return 卓のサイズ
 ***************************************************************************/
 LayoutSize TakuWindow::GetSize() {
-  return LayoutSize(Player::GetWidth(),
-                    Player::GetHeight() * 4 + TakuInfo::GetHeight());
+  return LayoutSize(Player::GetSize().width,
+                    Player::GetSize().height * 4 + TakuInfo::GetHeight());
 }
 /***********************************************************************//**
 	$Id$

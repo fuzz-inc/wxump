@@ -91,7 +91,7 @@ class Application
   void attachListener(Listener* listener);
 
   void onReceiveCommand(const ump::Command& command);
-  void onSelectHai(size_t index);
+  size_t onSelectHai(size_t index);
   void onCancel();
 
   void changeHaiSize(HaiSize size);
@@ -123,7 +123,9 @@ class Application::Listener {
   /**
    *
    */
-  virtual void onSelectHai(size_t index) {}
+  virtual size_t onSelectHai(size_t index) {
+    return std::numeric_limits<size_t>::max();
+  }
 
   /**
    *

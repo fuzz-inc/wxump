@@ -60,6 +60,7 @@ class ControlWindow;
 class Conversion;
 class HaiImage;
 class HaiObject;
+class HandRenderer;
 class LayoutPos;
 class LayoutRect;
 class LayoutRenderer;

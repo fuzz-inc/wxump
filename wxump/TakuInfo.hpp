@@ -34,7 +34,7 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 namespace wxump {
 /***********************************************************************//**
-	@brief
+	@brief 卓情報保持クラス
 ***************************************************************************/
 class TakuInfo
   : public Application::Listener

@@ -35,6 +35,7 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "wxump/ClientPlayer.hpp"
 #include "wxump/Conversion.hpp"
 #include "wxump/HaiObject.hpp"
+#include "wxump/HandRenderer.hpp"
 #include "wxump/Layout.hpp"
 #include "wxump/LayoutRenderer.hpp"
 #include "wxump/Player.hpp"
@@ -50,7 +51,8 @@ static const LayoutSize INFO_SIZE(HEIGHT, HEIGHT);
 ClientPlayer::ClientPlayer(std::shared_ptr<Client> client, 
                            std::shared_ptr<const ump::mj::Player> player)
 : super(client, player),
-  select_(INVALID_SELECT)
+  cursorIndex_(INVALID_SELECT),
+  nakiIndex_(INVALID_SELECT)
 {
   
 }
@@ -62,6 +64,9 @@ ClientPlayer::~ClientPlayer() {
 }
 /***********************************************************************//**
 	@brief マウス操作
+  @param[in] renderer 描画クラス
+  @param[in] event マウスイベント
+  @param[in] pos 描画部分のマウス位置
 ***************************************************************************/
 void ClientPlayer::onMouse(const LayoutRenderer& renderer,
                            const wxMouseEvent& event,
@@ -74,13 +79,13 @@ void ClientPlayer::onMouse(const LayoutRenderer& renderer,
   if(index.y == 0 &&
      index.x >= 0 &&
      index.x < getPlayer()->getMenzen().size()) {
-    setSelect(index.x);
+    setCursorIndex(index.x);
     if(event.LeftDown()) {
-      Application::Get()->onSelectHai(index.x);
+      setNakiIndex(Application::Get()->onSelectHai(index.x));
     }
   }
   else {
-    setSelect(INVALID_SELECT);
+    setCursorIndex(INVALID_SELECT);
   }
 }
 /***********************************************************************//**
@@ -99,7 +104,7 @@ void ClientPlayer::renderInfo(LayoutRenderer& renderer,
   {
     LayoutRect rect(pos, LayoutSize(size.width, LayoutValue(0, 0.5, 0)));
     if(auto zikaze = player->getZikaze()) {
-      renderer.renderText(rect, Conversion::getHaiString(zikaze) + "家",
+      renderer.renderText(rect, Conversion::GetHaiString(zikaze) + "家",
       isTurn() ? *wxYELLOW : *wxWHITE);
     }
     rect.pos.y += rect.size.height;
@@ -115,61 +120,19 @@ void ClientPlayer::renderInfo(LayoutRenderer& renderer,
   }
 }
 /***********************************************************************//**
-	@copydoc Player::renderHand
+	@copydoc Player::renderHais
 ***************************************************************************/
-void ClientPlayer::renderHand(LayoutRenderer& renderer,
-                              const LayoutPos& offset,
-                              bool isResult) const{
-  {
-    LayoutPos pos = offset;
-    auto& menzen = getPlayer()->getMenzen();
-    for(size_t i = 0, n = menzen.size(); i < n; i++) {
-      renderer.renderHai(pos, 
-                         HaiObject(menzen.at(i)).
-                         setSelect(i == getSelect() && !isResult));
-      pos.x.w += 1;
-    }
-  }
-  {
-    LayoutPos pos = offset +
+void ClientPlayer::renderHais(LayoutRenderer& renderer,
+                              const LayoutPos& offset) const {
+  HandRenderer hand(getClient(), getPlayer());
+  hand.renderKawa(renderer, offset);
+  LayoutPos pos = offset + LayoutSize(LayoutValue(), LayoutValue(0, 1, 1));
+  hand.renderMenzen(renderer, pos, getCursorIndex(), getNakiIndex());
+  pos = pos +
         LayoutSize((ResultWindow::GetWinSize().width -
                     LayoutValue(1, 0, 0)),
                     LayoutValue());
-    if(isResult) {
-      auto& lastSutehai = player_->getGame()->getLastSutehai();
-      if(lastSutehai->isRon()) {
-        renderer.renderHai(pos, HaiObject(lastSutehai->getHai()));
-        pos.x -= LayoutValue(0, 0, 1);
-      }
-    }
-    for(size_t i = 0, n = player_->countMentsu(); i < n; i++) {
-      pos = renderMentsu(renderer, pos, player_->getMentsu(i));
-      pos.x.margin -= 1;
-    }
-  }
-}
-/***********************************************************************//**
-	@copydoc Player::renderKawa
-***************************************************************************/
-void ClientPlayer::renderKawa(LayoutRenderer& renderer,
-                        const LayoutPos& offset) const {
-  LayoutPos pos = offset;
-  auto& kawa = player_->getKawa();
-  auto clientPlayer(getClient()->getPlayer());
-  for(size_t i = 0, n = kawa.size(); i < n; i++) {
-    auto& sutehai = kawa.at(i);
-    renderer.renderHai(pos, 
-                       HaiObject(sutehai.getHai()).
-                       setTsumogiri(sutehai.isTsumogiri()).
-                       setRichi(sutehai.isRichi()).
-                       setNaki(sutehai.isNaki()));
-    pos.x += sutehai.isRichi()
-      ? LayoutValue(0, 1, 0)
-      : LayoutValue(1, 0, 0);
-    if(i % 6 == 5) {
-      pos.x.margin += 1;
-    }
-  }
+  hand.renderAllMentsu(renderer, pos);
 }
 /***********************************************************************//**
 	$Id$

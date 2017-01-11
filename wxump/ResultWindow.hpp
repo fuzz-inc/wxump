@@ -45,25 +45,13 @@ class ResultWindow
   typedef wxPanel super;
 
  private:
-  enum {
-    RESULT_RYUUKYUKU,
-    RESULT_AGARI,
-    RESULT_GAME_END,
-  };
-  enum {
-    TOTAL_STR,
-    TOTAL_FU,
-    TOTAL_HAN,
-    TOTAL_MAX
-  };
-
- private:
   std::shared_ptr<Client> client_;
-  std::shared_ptr<const Player> player_;
+  std::shared_ptr<const ump::mj::Player> player_;
   std::unique_ptr<wxBitmap> bitmap_;
   LayoutRect cursor_;
   size_t resultType_;
   bool isResultPoint;
+  int addMargin_;
 
  public:
   ResultWindow(wxWindow* parent,
@@ -71,7 +59,7 @@ class ResultWindow
   virtual ~ResultWindow();
   
   UMP_ACCESSOR(Player, player_);
-  UMP_ACCESSOR(IsResultPoint, isResultPoint);
+  
   static const LayoutSize& GetWinSize();
  protected:
   void onReceiveCommand(const ump::Command& command) override;
@@ -79,6 +67,8 @@ class ResultWindow
 
  private:
   UMP_GETTER(Client, client_);
+  UMP_ACCESSOR(IsResultPoint, isResultPoint);
+  
   void show();
   void hide();
   void clear();
@@ -101,6 +91,8 @@ class ResultWindow
                         const wxColour& color,
                         const wxString& text);
   void renderAgariHais(LayoutRenderer& renderer);
+  
+  bool isClientPlayer(std::shared_ptr<const ump::mj::Player> player) const;
 };
 /***********************************************************************//**
 	$Id$

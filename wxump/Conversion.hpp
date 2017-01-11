@@ -38,9 +38,9 @@ namespace wxump {
 ***************************************************************************/
 class Conversion {
  public:
-  static wxString getHaiString(const ump::mj::Hai* hai);
-  static wxString getSayString(const char* chr);
-  static wxString getSeatNumber(const char* chr);
+  static wxString GetHaiString(const ump::mj::Hai* hai);
+  static wxString GetSayString(const char* chr);
+  static wxString GetSeatNumber(const char* chr);
 };
 /***********************************************************************//**
 	$Id$

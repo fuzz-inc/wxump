@@ -39,7 +39,7 @@ namespace wxump {
   @param[in] 牌クラス
   @return 牌の表記文字
 ***************************************************************************/
-wxString Conversion::getHaiString(const ump::mj::Hai* hai) {
+wxString Conversion::GetHaiString(const ump::mj::Hai* hai) {
   int color = hai->getColor();
   int number = hai->getNumber();
   wxString str = "?";
@@ -90,7 +90,7 @@ wxString Conversion::getHaiString(const ump::mj::Hai* hai) {
   @param[in] コマンド文字列
   @return プレイヤーコメント文字
 ***************************************************************************/
-wxString Conversion::getSayString(const char* chr) {
+wxString Conversion::GetSayString(const char* chr) {
   wxString comment("エラー");
   const char* str[] = {
     "pon", "chi", "kan", "ankan", "kakan",
@@ -114,7 +114,7 @@ wxString Conversion::getSayString(const char* chr) {
   @param[in] chr コマンド文字列
   @return 席番号
 ***************************************************************************/
-wxString Conversion::getSeatNumber(const char* chr) {
+wxString Conversion::GetSeatNumber(const char* chr) {
   wxString seatNumber;
   const char* str[] = {"A", "B", "C", "D"};
   for(int i = 0; i < 4; i++) {

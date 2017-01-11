@@ -47,7 +47,7 @@ class ControlWindow
  private:
   std::shared_ptr<Client> client_;
   std::map<int, wxAnyButton*> buttons_;
-  size_t choosing_;
+  size_t selected_;
   
  public:
   ControlWindow(wxWindow* parent,
@@ -56,7 +56,7 @@ class ControlWindow
   
  protected:
   void onReceiveCommand(const ump::Command& command) override;
-  void onSelectHai(size_t index) override;
+  size_t onSelectHai(size_t index) override;
   void onCancel() override;
 
  private:
@@ -70,7 +70,7 @@ class ControlWindow
   void createButton();
   
   void setKyokuStart();
-  void setButtonEnable(const ump::Command command);
+  void setButtonEnable(const ump::Command& command);
   void setButtonDisable();
 
   void onButton(wxCommandEvent& event);
@@ -79,10 +79,15 @@ class ControlWindow
   void setToggle(int id, bool value);
   bool isToggle(int id) const;
   void setSwitchToggle(int id);
+  void setSelected(size_t index);
   
-  bool doAutoAgari(const ump::Command& command);
-  bool doAutoNakiCancel(const ump::Command& command);
+  void doSutehai(const size_t& index);
+  
+  void doReply(const ump::Command& command);
+  void doAutoAgari(const ump::Command& command);
+  void doAutoNakiCancel(const ump::Command& command);
   void doAutoSayTenpai(const ump::Command& command);
+  void doAutoSutehai(const ump::Command& command);
 };
 /***********************************************************************//**
 	$Id$

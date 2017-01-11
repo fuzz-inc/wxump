@@ -40,7 +40,8 @@ namespace wxump {
 class ClientPlayer : public Player {
   typedef Player super;
  private:
-  size_t select_;
+  size_t cursorIndex_;
+  size_t nakiIndex_;
   
  public:
   ClientPlayer(std::shared_ptr<Client> client, 
@@ -51,16 +52,13 @@ class ClientPlayer : public Player {
                const wxMouseEvent& event, 
                const wxPoint& pos);
   
-  void renderHand(LayoutRenderer& renderer,
-                  const LayoutPos& offset,
-                  bool isResult) const override;
  private:
-  UMP_ACCESSOR(Select, select_);
+  UMP_ACCESSOR(CursorIndex, cursorIndex_);
+  UMP_ACCESSOR(NakiIndex, nakiIndex_);
   
   void renderInfo(LayoutRenderer& renderer, 
                   const LayoutPos& offset) override;
-  
-  void renderKawa(LayoutRenderer& renderer,
+  void renderHais(LayoutRenderer& renderer,
                   const LayoutPos& offset) const override;
 };
 /***********************************************************************//**

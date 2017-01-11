@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright 2016 fuzz, Inc. All rights reserved. 
    http://www.fuzz.co.jp
 
@@ -34,36 +34,42 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 namespace wxump {
 /***********************************************************************//**
-	@brief 牌オブジェクト
+	@brief 牌を並べて描画する
 ***************************************************************************/
-class HaiObject {
+class HandRenderer {
  private:
-  enum {
-    FLAG_SELECT,
-    FLAG_SELECTED,
-    FLAG_TSUMOGIRI, 
-    FLAG_RICHI,
-    FLAG_NAKI,
-    FLAG_NAKI_Q,
-    FLAG_MAX
-  };
-
- private:
-  const ump::mj::Hai* hai_;
-  std::bitset<FLAG_MAX> flag_;
-  size_t alpha_ = 0xff;
+  std::shared_ptr<Client> client_;
+  std::shared_ptr<const ump::mj::Hand> hand_;
+  
  public:
-  HaiObject(const ump::mj::Hai* hai) : hai_(hai) {}
-  ~HaiObject() = default;
+  HandRenderer(std::shared_ptr<Client> client,
+                std::shared_ptr<const ump::mj::Hand> hand);
+  ~HandRenderer();
 
-  UMP_GETTER(Hai, hai_);
-  UMP_ACCESSOR(Alpha, alpha_);
-  UMP_BIT_ACCESSOR(Select, flag_, FLAG_SELECT);
-  UMP_BIT_ACCESSOR(Selected, flag_, FLAG_SELECTED);
-  UMP_BIT_ACCESSOR(Tsumogiri, flag_, FLAG_TSUMOGIRI);
-  UMP_BIT_ACCESSOR(Richi, flag_, FLAG_RICHI);
-  UMP_BIT_ACCESSOR(Naki, flag_, FLAG_NAKI);
-  UMP_BIT_ACCESSOR(NakiQ, flag_, FLAG_NAKI_Q);
+  void renderMenzen(LayoutRenderer& renderer,
+                    const LayoutPos& offset,
+                    size_t index = std::numeric_limits<size_t>::max(),
+                    size_t selected = std::numeric_limits<size_t>::max())
+                    const;
+  
+  void renderAllMentsu(LayoutRenderer& renderer,
+                    const LayoutPos& offset) const;
+  
+  void renderKawa(LayoutRenderer& renderer,
+                  const LayoutPos& offset,
+                  bool isTurn = false, size_t alpha = 255) const;
+  
+  LayoutPos renderRonHai(LayoutRenderer& renderer,
+                          const LayoutPos& offset) const;
+  
+ private:
+  UMP_GETTER(Client, client_);
+  UMP_GETTER(Hand, hand_);
+  LayoutPos renderMentsu(LayoutRenderer& renderer,
+                            LayoutPos pos,
+                            const ump::mj::Mentsu& mentsu) const;
+  
+  
 };
 /***********************************************************************//**
 	$Id$

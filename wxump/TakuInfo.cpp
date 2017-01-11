@@ -75,28 +75,30 @@ void TakuInfo::onReceiveCommand(const ump::Command& command) {
 ***************************************************************************/
 void TakuInfo::onPaint(LayoutRenderer& renderer) {
   if(auto bakaze = getClient()->getBakaze()) {
-    LayoutRect rect(LayoutPos(LayoutValue(0, 0, 1), LayoutValue(0, 0, 1)), 
+    auto client = getClient();
+    LayoutRect rect(LayoutPos(LayoutValue(0, 0, 1), LayoutValue(0, 0, 1)),
                     LayoutSize(GetSize().width, LayoutValue(0, 1, 0)));
     renderer.renderText(rect, 
-                        wxString::Format("%s%d局", 
-                                         Conversion::getHaiString(bakaze), 
-                                         int(getClient()->getOya() + 1)));
+                  wxString::Format("%s%d局",
+                                   Conversion::GetHaiString(bakaze),
+                                   static_cast<int>(client->getOya() + 1)));
     rect.pos.x += LayoutValue(0, 3, 0);
     rect.pos.y += LayoutValue(0, 0.5, 0);
     rect.size.height *= 0.5;
     wxString text;
-    int renchan = getClient()->getRenchan();
+    int renchan = client->getRenchan();
     if(renchan > 0) {
       text = wxString::Format("%d本場 ", renchan);
     }
-    text.Append(wxString::Format("残り%d", int(getClient()->getRest())));
+    text.Append(wxString::Format("残り%d",
+                                  static_cast<int>(client->getRest())));
     renderer.renderText(rect, text);
     renderDora(renderer);
   }
 }
 /***********************************************************************//**
 	@brief 表示するドラをセットする
-  @param[in] command サーバーからのコマンド
+  @param[in] command 受信コマンド
 ***************************************************************************/
 void TakuInfo::setDora(const ump::Command& command) {
   auto hai = ump::mj::Hai::Get(command.getArg(0).c_str());
@@ -120,7 +122,7 @@ void TakuInfo::resetDora() {
 }
 /***********************************************************************//**
 	@brief ドラを表示する
-	@param[in] renderer レンダラー
+	@param[in] renderer 描画クラス
 ***************************************************************************/
 void TakuInfo::renderDora(LayoutRenderer& renderer) {
   LayoutPos pos(GetSize().width - LayoutValue(0, 0, 1), 
@@ -140,7 +142,7 @@ LayoutValue TakuInfo::GetHeight() {
 	@brief サイズ
 ***************************************************************************/
 LayoutSize TakuInfo::GetSize() {
-  return LayoutSize(Player::GetWidth(), HEIGHT);
+  return LayoutSize(Player::GetSize().width, HEIGHT);
 }
 /***********************************************************************//**
 	$Id$

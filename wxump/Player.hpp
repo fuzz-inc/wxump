@@ -55,13 +55,6 @@ class Player {
   void onPaint(LayoutRenderer& renderer, 
                const LayoutPos& offset);
   
-  virtual void renderHand(LayoutRenderer& renderer,
-                          const LayoutPos& offset,
-                          bool isResult = false) const;
-  const bool isMjPlayer(const ump::mj::Player* player) const;
-  
-  static const LayoutValue& GetWidth();
-  static const LayoutValue& GetHeight();
   static const LayoutSize& GetSize();
   
  protected:
@@ -71,14 +64,8 @@ class Player {
   virtual void renderInfo(LayoutRenderer& renderer,
                           const LayoutPos& offset);
   
-  void renderHais(LayoutRenderer& renderer,
-                  const LayoutPos& offset) const;
-  virtual void renderKawa(LayoutRenderer& renderer,
+  virtual void renderHais(LayoutRenderer& renderer,
                           const LayoutPos& offset) const;
-
-  LayoutPos renderMentsu(LayoutRenderer& renderer, 
-                         LayoutPos pos, 
-                         const ump::mj::Mentsu& mentsu) const;
   
   const bool isTurn() const;
   

@@ -34,6 +34,7 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "wxump/Client.hpp"
 #include "wxump/Conversion.hpp"
 #include "wxump/HaiObject.hpp"
+#include "wxump/HandRenderer.hpp"
 #include "wxump/Layout.hpp"
 #include "wxump/LayoutRenderer.hpp"
 #include "wxump/Player.hpp"
@@ -50,6 +51,17 @@ static const LayoutValue POINT_STR_POSX =
   (SIZE.width - POINT_STR_WIDTH) * 0.5;
 static const LayoutValue YAKU_STR_POSX =
   (SIZE.width - YAKU_STR_WIDTH) * 0.5;
+enum RESULT {
+  RESULT_RYUUKYUKU,
+  RESULT_AGARI,
+  RESULT_GAME_END,
+};
+enum TOTAL{
+  TOTAL_STR,
+  TOTAL_FU,
+  TOTAL_HAN,
+  TOTAL_MAX
+};
 /***********************************************************************//**
 	@brief コンストラクタ
 ***************************************************************************/
@@ -63,6 +75,7 @@ ResultWindow::ResultWindow(wxWindow* parent,
   SetWindowStyle(wxSTAY_ON_TOP);
   Hide();
   Bind(wxEVT_LEFT_DOWN, &ResultWindow::onMouse, this);
+  Bind(wxEVT_MOUSEWHEEL, &ResultWindow::onMouse, this);
   Bind(wxEVT_PAINT, &ResultWindow::onPaint, this);
   Application::Get()->attachListener(this);
 }
@@ -104,19 +117,20 @@ void ResultWindow::onReceiveCommand(const ump::Command& command) {
 }
 /***********************************************************************//**
 	@brief ウィンドウサイズ変更処理
+  @param[in] renderer 描画クラス
 ***************************************************************************/
 void ResultWindow::onChangeLayout(const LayoutRenderer& renderer) {
   SetClientSize(renderer.getSize(WINDOW_SIZE));
 
   if(bitmap_) {
     bitmap_->SetWidth(Application::Get()->getLayoutRenderer().
-                    getSize(SIZE).GetWidth());
+                      getSize(SIZE).GetWidth());
     bitmap_->SetHeight(Application::Get()->getLayoutRenderer().
-                    getSize(SIZE).GetHeight());
+                      getSize(SIZE).GetHeight());
   }
 }
 /***********************************************************************//**
-	@brief 
+	@brief ウィンドウ表示時
 ***************************************************************************/
 void ResultWindow::show() {
   CenterOnParent();
@@ -132,7 +146,6 @@ void ResultWindow::show() {
     renderTitleText(renderer, *wxWHITE, "終局");
     break;
   default:
-    assert(false);
     break;
   }
   endRender(renderer);
@@ -144,6 +157,7 @@ void ResultWindow::show() {
 void ResultWindow::hide() {
   clear();
   player_ = nullptr;
+  addMargin_ = 0;
   setIsResultPoint(false);
   super::Hide();
 }
@@ -154,11 +168,29 @@ void ResultWindow::clear() {
   bitmap_.reset();
 }
 /***********************************************************************//**
-	@brief 
+	@brief マウス処理
+  @param[in] event マウスイベント
 ***************************************************************************/
 void ResultWindow::onMouse(wxMouseEvent &event) {
-  client_->replyCommand(ump::Command(ump::Command::TYPE_YES));
-  Show(false);
+  if(event.LeftDown()) {
+    client_->replyCommand(ump::Command(ump::Command::TYPE_YES));
+    Show(false);
+  }
+  else if(auto delta = event.GetWheelRotation()) {
+    int cursor = Application::Get()->getLayoutRenderer().
+                  getPos(cursor_.pos).y;
+    int height = Application::Get()->getLayoutRenderer().getSize(SIZE).y;
+    if(cursor >= height) {
+      addMargin_ -= delta;
+      if(addMargin_ < 0) {
+        addMargin_ = 0;
+      }
+      int maxMargin = (cursor - height) * 0.25;
+      if(addMargin_ > maxMargin) {
+        addMargin_ = maxMargin;
+      }
+    }
+  }
 }
 /***********************************************************************//**
 	@brief 描画
@@ -172,7 +204,8 @@ void ResultWindow::onPaint(wxPaintEvent& event) {
                       wxNullColour);
   if(bitmap_) {
     renderer.renderBitmap(LayoutPos(LayoutValue(0, 0, 1), 
-                                    LayoutValue(0, 0, 1)), *bitmap_);
+                                    LayoutValue(0, 0, 1 - addMargin_)),
+                          *bitmap_);
   }
   renderer.endRender();
 }
@@ -214,13 +247,13 @@ void ResultWindow::onPoint(const ump::Command& command) {
   if(getIsResultPoint()) {
     auto& renderer = beginRender(RESULT_RYUUKYUKU);
     auto player = client_->getPlayer(command.getArg(0).c_str());
-    wxColour color = (player == client_->getPlayer()) ? *wxBLUE : *wxWHITE;
+    wxColour color = isClientPlayer(player) ? *wxCYAN : *wxWHITE;
     auto zikaze = player->getZikaze();
     cursor_.pos.x = POINT_STR_POSX;
     cursor_.size.width = POINT_STR_WIDTH;
     renderText(renderer, color,
                wxString::Format("%s家 %s", 
-                                Conversion::getHaiString(zikaze), 
+                                Conversion::GetHaiString(zikaze),
                                 player->getName()), 
                command.getArg(1));
     endRender(renderer);
@@ -239,8 +272,9 @@ void ResultWindow::onGameEnd(const ump::Command &command) {
   for(int i = 0; i < client->countPlayer(); i++) {
     auto seat = command.getArg(i << 1).c_str();
     auto player = client->getPlayer(seat);
-    wxString numStr = Conversion::getSeatNumber(seat) + ":";
-    renderText(renderer, *wxWHITE,
+    wxColour color = isClientPlayer(player) ? *wxCYAN : *wxWHITE;
+    wxString numStr = Conversion::GetSeatNumber(seat) + ":";
+    renderText(renderer, color,
                wxString::Format("%i位 ", i + 1) + numStr +
                                 player->getName(),
                command.getArg((i << 1) + 1));
@@ -250,11 +284,13 @@ void ResultWindow::onGameEnd(const ump::Command &command) {
 /***********************************************************************//**
 	@brief 描画開始
   @param[in] リザルトの種類(アガリ、流局、終局)
+  @return 描画クラス
 ***************************************************************************/
 LayoutRenderer& ResultWindow::beginRender(int resultType) {
   auto& renderer = Application::Get()->getLayoutRenderer();
   if(!bitmap_) {
-    bitmap_.reset(new wxBitmap(renderer.getSize(SIZE)));
+    LayoutSize SIZEx2 = LayoutSize(SIZE.width, SIZE.height * 2);
+    bitmap_.reset(new wxBitmap(renderer.getSize(SIZEx2)));
     cursor_ = LayoutRect(LayoutPos(YAKU_STR_POSX,
                                     LayoutValue(0, 1.5, 0)),
                          LayoutSize(YAKU_STR_WIDTH,
@@ -306,13 +342,27 @@ void ResultWindow::renderTitleText(LayoutRenderer& renderer,
   @param[in] renderer 描画クラス
 ***************************************************************************/
 void ResultWindow::renderAgariHais(LayoutRenderer& renderer) {
-  assert(player_);
+  assert(getPlayer());
   LayoutPos offset(LayoutValue(), cursor_.pos.y);
-  player_->renderHand(renderer, offset, true);
+  HandRenderer hand(getClient(), getPlayer());
+  hand.renderMenzen(renderer, offset);
+  offset = offset + LayoutSize((ResultWindow::GetWinSize().width -
+                                  LayoutValue(1, 0, 0)),
+                                LayoutValue());
+  offset = hand.renderRonHai(renderer, offset);
+  hand.renderAllMentsu(renderer, offset);
   cursor_.pos.y += LayoutValue(0, 1, 1);
 }
 /***********************************************************************//**
+	@brief
+***************************************************************************/
+bool ResultWindow::isClientPlayer(
+    std::shared_ptr<const ump::mj::Player> player) const{
+  return player == client_->getPlayer();
+}
+/***********************************************************************//**
 	@brief リザルト画面のサイズを求める
+  @return リザルト画面サイズ
 ***************************************************************************/
 const LayoutSize& ResultWindow::GetWinSize() {
   return SIZE;

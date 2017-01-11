@@ -37,6 +37,7 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "wxump/Server.hpp"
 
 namespace wxump {
+static const size_t INVALID_SELECT  = std::numeric_limits<size_t>::max();
 /***********************************************************************//**
 	@brief コンストラクタ
 ***************************************************************************/
@@ -77,10 +78,13 @@ void Application::onReceiveCommand(const ump::Command& command) {
 /***********************************************************************//**
 	@brief 牌選択処理
 ***************************************************************************/
-void Application::onSelectHai(size_t index) {
+size_t Application::onSelectHai(size_t index) {
+  size_t ret = INVALID_SELECT;
   for(auto listener : listeners_) {
-    listener->onSelectHai(index);
+    size_t num = listener->onSelectHai(index);
+    ret = (num != INVALID_SELECT) ? num : ret;
   }
+  return ret;
 }
 /***********************************************************************//**
 	@brief キャンセルボタン処理

@@ -38,6 +38,7 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "wxump/Player.hpp"
 
 namespace wxump {
+static const size_t INVALID_SELECT  = std::numeric_limits<size_t>::max();
 /***********************************************************************//**
 	@brief コンストラクタ
 ***************************************************************************/
@@ -45,7 +46,7 @@ ControlWindow::ControlWindow(wxWindow* parent,
                              std::shared_ptr<Client> client)
   : super(parent),
     client_(client),
-    choosing_(-1)
+    selected_(INVALID_SELECT)
 {
   createButton();
   SetBackgroundColour(wxColour(0, 128, 0));
@@ -76,6 +77,7 @@ void ControlWindow::onReceiveCommand(const ump::Command& command) {
     setButtonDisable();
     break;
   case ump::Command::TYPE_SUTEHAI_Q:
+    doAutoSutehai(command);
     doAutoAgari(command);
     setButtonEnable(command);
     break;
@@ -94,76 +96,68 @@ void ControlWindow::onReceiveCommand(const ump::Command& command) {
 	@brief 牌を選択した
 	@param[in] index インデックス
 ***************************************************************************/
-void ControlWindow::onSelectHai(size_t index) {
+size_t ControlWindow::onSelectHai(size_t index) {
   auto client = getClient();
   auto player = client->getPlayer();
   auto menzen(player->getMenzen());
   switch(client->getCommand().getType()) {
   case ump::Command::TYPE_SUTEHAI_Q:
-    {
-      if(isToggle(BUTTON_KAN)) {
-        auto hai = menzen.at(index);
-        if(player->findKakanMentsu(hai)) {
-          client->replyCommand(ump::Command(ump::Command::TYPE_KAKAN).
-                                append(hai->toString()));
-        }
-        else if(menzen.countSame(hai) == 4) {
-          ump::mj::HaiArray hais;
-          for(int i = 0; i < 4; i++) {
-            hais.append(menzen.removeSame(hai));
-          }
-          client->replyCommand(ump::Command(ump::Command::TYPE_ANKAN).
-                                append(hais.toString()));
-        }
-        setToggle(BUTTON_KAN, false);
+    if(isToggle(BUTTON_KAN)) {
+      auto hai = menzen.at(index);
+      if(player->findKakanMentsu(hai)) {
+        doReply(ump::Command(ump::Command::TYPE_KAKAN).
+                append(hai->toString()));
       }
-      else {
-        ump::Command reply(ump::Command::TYPE_SUTEHAI);
-        reply.append(menzen.at(index)->toString());
-        if(index == menzen.size() - 1) {
-          reply.append("tsumogiri");
+      else if(menzen.countSame(hai) == 4) {
+        ump::mj::HaiArray hais;
+        for(int i = 0; i < 4; i++) {
+          hais.append(menzen.removeSame(hai));
         }
-        if(isToggle(BUTTON_RICHI)) {
-          reply.append(ump::Command::TYPE_RICHI);
-        }
-        client->replyCommand(reply);
+        doReply(ump::Command(ump::Command::TYPE_ANKAN).
+                append(hais.toString()));
       }
+      setToggle(BUTTON_KAN, false);
+    }
+    else {
+      doSutehai(index);
     }
     break;
   case ump::Command::TYPE_NAKI_Q:
     if(isToggle(BUTTON_PON) || isToggle(BUTTON_CHI)) {
-      if(choosing_ == -1) {
-        choosing_ = index;
+      if(selected_ == INVALID_SELECT) {
+        setSelected(index);
       }
-      else if(choosing_ == index) {
-        choosing_ = -1;
+      else if(selected_ == index) {
+        setSelected(INVALID_SELECT);
       }
       else {
         auto hai = ump::mj::Hai::Get(client->getCommand().
                                       getArg(0).c_str());
         ump::mj::HaiArray hais;
-        hais.append(menzen.at(choosing_)).append(menzen.at(index));
+        hais.append(menzen.at(selected_)).
+             append(menzen.at(index));
         if(isToggle(BUTTON_PON)) {
           if(player->canPon(hais, hai)) {
-            client->replyCommand(ump::Command(ump::Command::TYPE_PON).
-                                  append(hais.toString()));
+            doReply(ump::Command(ump::Command::TYPE_PON).
+                    append(hais.toString()));
           }
           setToggle(BUTTON_PON, false);
         }
         else if(isToggle(BUTTON_CHI)) {
           if(player->canChi(hais, hai)) {
-            client->replyCommand(ump::Command(ump::Command::TYPE_CHI).
-                                  append(hais.toString()));
+            doReply(ump::Command(ump::Command::TYPE_CHI).
+                    append(hais.toString()));
           }
           setToggle(BUTTON_CHI, false);
         }
-        choosing_ = -1;
+        setSelected(INVALID_SELECT);
       }
     }
     break;
   default:
     break;
   }
+  return selected_;
 }
 /***********************************************************************//**
 	@brief キャンセルした
@@ -172,10 +166,10 @@ void ControlWindow::onCancel() {
   auto client = getClient();
   switch(client->getCommand().getType()) {
   case ump::Command::TYPE_NAKI_Q:
-    client->replyCommand(ump::Command(ump::Command::TYPE_NO));
+    doReply(ump::Command(ump::Command::TYPE_NO));
     break;
   case ump::Command::TYPE_READY_Q:
-    client->replyCommand(ump::Command(ump::Command::TYPE_YES));
+    doReply(ump::Command(ump::Command::TYPE_YES));
     break;
   default:
     break;
@@ -224,18 +218,19 @@ void ControlWindow::createButton() {
   SetSizerAndFit(sizer);
 }
 /***********************************************************************//**
-	@brief 局開始時の初期化
+	@brief 局開始時
 ***************************************************************************/
 void ControlWindow::setKyokuStart() {
+  setToggle(BUTTON_AUTO_AGARI, false);
   setToggle(BUTTON_AUTO_SAY_TENPAI, true);
   setToggle(BUTTON_AUTO_NAKI_CANCEL, false);
   setToggle(BUTTON_RICHI, false);
 }
 /***********************************************************************//**
 	@brief 押せるボタンを決める
-  @param[in] command サーバーからのコマンド
+  @param[in] command 受信コマンド
 ***************************************************************************/
-void ControlWindow::setButtonEnable(const ump::Command command) {
+void ControlWindow::setButtonEnable(const ump::Command& command) {
   bool canRichi = command.hasArg(ump::Command::TYPE_RICHI);
   bool canRon = command.hasArg(ump::Command::TYPE_RON);
   bool canTsumo = command.hasArg(ump::Command::TYPE_TSUMO);
@@ -276,38 +271,44 @@ void ControlWindow::setButtonDisable() {
   buttons_[BUTTON_AGARI]->SetLabel("アガリ");
 }
 /***********************************************************************//**
+	@brief
+***************************************************************************/
+void ControlWindow::setSelected(size_t index) {
+  selected_ = index;
+}
+/***********************************************************************//**
 	@brief ポンボタンを押した処理
+  @param[in] event コマンドイベント
 ***************************************************************************/
 void ControlWindow::onPonDown(wxCommandEvent &event) {
-  auto command = client_->getCommand();
   auto client = getClient();
-  if(command.hasArg(ump::Command::TYPE_PON)) {
-    auto hai = ump::mj::Hai::Get(command.getArg(0).c_str());
-    hai = ump::mj::Hai::Get(hai->getColor(), hai->getNumber());
-    auto player = client->getPlayer(client->getSeat());
-    auto menzen(player->getMenzen());
-    size_t all_num = menzen.countSame(hai);
-    size_t red_num = all_num - menzen.countEqual(hai);
-    if((red_num == 0 && all_num > 2) ||
-        all_num == 2 || red_num == all_num) {
-      ump::mj::HaiArray hais;
-      hais.append(menzen.removeSame(hai)).append(menzen.removeSame(hai));
-      client->replyCommand(ump::Command(ump::Command::TYPE_PON).
-                            append(hais.toString()));
-      setToggle(BUTTON_PON, false);
-    }
+  auto command = client->getCommand();
+  auto hai = ump::mj::Hai::Get(command.getArg(0).c_str());
+  hai = ump::mj::Hai::Get(hai->getColor(), hai->getNumber());
+  auto player = client->getPlayer();
+  auto menzen(player->getMenzen());
+  size_t all_num = menzen.countSame(hai);
+  size_t red_num = all_num - menzen.countEqual(hai);
+  if(red_num == 0 ||  // 赤牌なし
+     all_num == 2 ||  // 2枚のみ
+     red_num == all_num) {  // 赤牌のみ
+    ump::mj::HaiArray hais;
+    hais.append(menzen.removeSame(hai)).
+         append(menzen.removeSame(hai));
+    doReply(ump::Command(ump::Command::TYPE_PON).
+            append(hais.toString()));
+    setToggle(BUTTON_PON, false);
   }
 }
 /***********************************************************************//**
 	@brief チーボタンを押した処理
+  @param[in] event コマンドイベント
 ***************************************************************************/
 void ControlWindow::onChiDown(wxCommandEvent &event) {
   auto command = client_->getCommand();
   auto hai = ump::mj::Hai::Get(command.getArg(0).c_str());
-  // 鳴かれ牌はドラを考慮しない
   hai = ump::mj::Hai::Get(hai->getColor(), hai->getNumber());
-  auto client = getClient();
-  auto player = client->getPlayer(client->getSeat());
+  auto player = getClient()->getPlayer();
   auto menzen(player->getMenzen());
   bool shift_m1 = menzen.isInclude(hai->shift(-1));
   bool shift_m2 = menzen.isInclude(hai->shift(-2));
@@ -334,48 +335,51 @@ void ControlWindow::onChiDown(wxCommandEvent &event) {
     size_t all_num2 = menzen.countSame(hai2);
     size_t red_num1 = all_num1 - menzen.countEqual(hai1);
     size_t red_num2 = all_num2 - menzen.countEqual(hai2);
-    if((red_num1 == 0 || all_num1 == red_num1) &&
-        (red_num2 == 0 || all_num2 == red_num2)) {
+    if((red_num1 == 0 || all_num1 == red_num1) && // 赤牌なしか赤牌のみ
+       (red_num2 == 0 || all_num2 == red_num2)) { // ゞ
       ump::mj::HaiArray hais;
-      hais.append(menzen.removeSame(hai1)).append(menzen.removeSame(hai2));
-      client->replyCommand(ump::Command(ump::Command::TYPE_CHI).
-                            append(hais.toString()));
+      hais.append(menzen.removeSame(hai1)).
+           append(menzen.removeSame(hai2));
+      doReply(ump::Command(ump::Command::TYPE_CHI).
+              append(hais.toString()));
       setToggle(BUTTON_CHI, false);
     }
   }
 }
 /***********************************************************************//**
 	@brief カンボタンを押した処理
+  @param[in] event コマンドイベント
 ***************************************************************************/
 void ControlWindow::onKanDown(wxCommandEvent &event) {
   auto client = getClient();
-  auto player = client->getPlayer(client->getSeat());
+  auto player = client->getPlayer();
   auto command = client->getCommand();
   auto menzen(player->getMenzen());
-  if(command.hasArg(ump::Command::TYPE_KAN)) {
-    auto hai = ump::mj::Hai::Get(command.getArg(0).c_str());
-    auto hais = player->getKanPattern(hai);
-    auto test = hais.getHais().toString();
-    client->replyCommand(ump::Command(ump::Command::TYPE_KAN).
-                          append(hais[0].toString()));
-    setToggle(BUTTON_KAN, false);
-  }
-  else if(command.hasArg(ump::Command::TYPE_ANKAN) ||
+  
+  if(command.hasArg(ump::Command::TYPE_ANKAN) ||
           command.hasArg(ump::Command::TYPE_KAKAN)) {
     auto kanableHais = player->getKanPattern();
     if(kanableHais.size() == 1) {
       if(command.hasArg(ump::Command::TYPE_KAKAN)) {
         auto hai = menzen.removeSame(kanableHais[0].at(0));
-        client->replyCommand(ump::Command(ump::Command::TYPE_KAKAN).
-                              append(hai->toString()));
+        doReply(ump::Command(ump::Command::TYPE_KAKAN).
+                append(hai->toString()));
       }
       else if(command.hasArg(ump::Command::TYPE_ANKAN)) {
         ump::mj::HaiArray hais = kanableHais[0];
-        client->replyCommand(ump::Command(ump::Command::TYPE_ANKAN).
-                              append(hais.toString()));
+        doReply(ump::Command(ump::Command::TYPE_ANKAN).
+                append(hais.toString()));
       }
       setToggle(BUTTON_KAN, false);
     }
+  }
+  else {
+    auto hai = ump::mj::Hai::Get(command.getArg(0).c_str());
+    auto hais = player->getKanPattern(hai);
+    auto test = hais.getHais().toString();
+    doReply(ump::Command(ump::Command::TYPE_KAN).
+            append(hais[0].toString()));
+    setToggle(BUTTON_KAN, false);
   }
 }
 /***********************************************************************//**
@@ -383,15 +387,14 @@ void ControlWindow::onKanDown(wxCommandEvent &event) {
   @param[in] event コマンドイベント
 ***************************************************************************/
 void ControlWindow::onButton(wxCommandEvent& event) {
-  auto client = getClient();
   switch(event.GetId()) {
   case BUTTON_AGARI:
-    switch(client->getCommand().getType()) {
+    switch(getClient()->getCommand().getType()) {
     case ump::Command::TYPE_SUTEHAI_Q:
-      client->replyCommand(ump::Command(ump::Command::TYPE_TSUMO));
+      doReply(ump::Command(ump::Command::TYPE_TSUMO));
       break;
     case ump::Command::TYPE_NAKI_Q:
-      client->replyCommand(ump::Command(ump::Command::TYPE_RON));
+      doReply(ump::Command(ump::Command::TYPE_RON));
       break;
     default:
       break;
@@ -458,40 +461,72 @@ void ControlWindow::setSwitchToggle(int id) {
   }
 }
 /***********************************************************************//**
-	@brief 自動でアガる処理
+	@brief
 ***************************************************************************/
-bool ControlWindow::doAutoAgari(const ump::Command& command) {
+void ControlWindow::doSutehai(const size_t& index) {
+  auto player = getClient()->getPlayer();
+  auto menzen(player->getMenzen());
+  ump::Command reply(ump::Command::TYPE_SUTEHAI);
+  reply.append(menzen.at(index)->toString());
+  if(index == menzen.size() - 1) {
+    reply.append("tsumogiri");
+  }
+  if(isToggle(BUTTON_RICHI)) {
+    reply.append(ump::Command::TYPE_RICHI);
+  }
+  doReply(reply);
+}
+/***********************************************************************//**
+	@brief クライアントに返答する
+  @param[in] command 返答用コマンド
+***************************************************************************/
+void ControlWindow::doReply(const ump::Command& command) {
+  getClient()->replyCommand(command);
+}
+/***********************************************************************//**
+	@brief 自動でアガる処理
+  @param[in] command 受信コマンド
+***************************************************************************/
+void ControlWindow::doAutoAgari(const ump::Command& command) {
   if(isToggle(BUTTON_AUTO_AGARI)) {
     if(command.hasArg(ump::Command::TYPE_TSUMO)) {
-      getClient()->replyCommand(ump::Command(ump::Command::TYPE_TSUMO));
-      return true;
+      doReply(ump::Command(ump::Command::TYPE_TSUMO));
     }
     else if(command.hasArg(ump::Command::TYPE_RON)) {
-      getClient()->replyCommand(ump::Command(ump::Command::TYPE_RON));
-      return true;
+      doReply(ump::Command(ump::Command::TYPE_RON));
     }
   }
-  return false;
 }
 /***********************************************************************//**
 	@brief 自動で鳴かない処理
+  @param[in] command 受信コマンド
 ***************************************************************************/
-bool ControlWindow::doAutoNakiCancel(const ump::Command& command) {
+void ControlWindow::doAutoNakiCancel(const ump::Command& command) {
   if(isToggle(BUTTON_AUTO_NAKI_CANCEL) && 
      !command.hasArg(ump::Command::TYPE_RON)) {
-    getClient()->replyCommand(ump::Command(ump::Command::TYPE_NO));
-    return true;
+    doReply(ump::Command(ump::Command::TYPE_NO));
   }
-  return false;
 }
 /***********************************************************************//**
 	@brief 自動でテンパイ宣言しない処理
+  @param[in] command 受信コマンド
 ***************************************************************************/
 void ControlWindow::doAutoSayTenpai(const ump::Command& command) {
-  getClient()->
-    replyCommand(ump::Command(isToggle(BUTTON_AUTO_SAY_TENPAI)
-                              ? ump::Command::TYPE_YES
-                              : ump::Command::TYPE_NO));
+  doReply(ump::Command(isToggle(BUTTON_AUTO_SAY_TENPAI)
+                        ? ump::Command::TYPE_YES
+                        : ump::Command::TYPE_NO));
+}
+/***********************************************************************//**
+	@brief リーチ時に自動でツモ牌を捨てる
+  @param[in] command 受信コマンド
+***************************************************************************/
+void ControlWindow::doAutoSutehai(const ump::Command& command) {
+  auto& player = getClient()->getPlayer();
+  if(player->isRichi() &&
+    !(command.hasArg(ump::Command::TYPE_TSUMO) ||
+      command.hasArg(ump::Command::TYPE_ANKAN))) {
+    doSutehai(player->getMenzen().size() - 1);
+  }
 }
 /***********************************************************************//**
 	$Id$

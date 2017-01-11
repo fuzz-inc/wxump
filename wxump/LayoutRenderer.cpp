@@ -62,6 +62,7 @@ void LayoutRenderer::renderHai(const LayoutPos& layoutPos,
   wxBitmap bitmap(haiImage_->getBitmap(object.getHai()));
   size_t blue = 0xff;
   size_t alpha = 0xff;
+  size_t green = 0xff;
   if(object.isNakiQ()) {
     alpha = object.getAlpha();
   }
@@ -71,7 +72,11 @@ void LayoutRenderer::renderHai(const LayoutPos& layoutPos,
   if(object.isTsumogiri()) {
     blue = 0xc0;
   }
-  bitmap = ApplyColor(bitmap, wxColour(0xff, 0xff, blue, alpha));
+  if(object.isSelected()) {
+    green = 0xc0;
+    blue = 0xc0;
+  }
+  bitmap = ApplyColor(bitmap, wxColour(0xff, green, blue, alpha));
   if(object.isRichi()) {
     bitmap = wxBitmap(bitmap.ConvertToImage().Rotate90(false));
     pos.y += haiImage_->getHeight() - haiImage_->getWidth();
@@ -145,25 +150,34 @@ void LayoutRenderer::renderLine(const LayoutPos& start,
   dc.DrawLine(getPos(start), getPos(end));
 }
 /***********************************************************************//**
-	@brief
+	@brief 牌単位の位置座標から実数値の位置座標を取得する
+  @param[in] pos 牌単位の位置座標
+  @return 実数値の位置座標
 ***************************************************************************/
 wxPoint LayoutRenderer::getPos(const LayoutPos& pos) const {
   return wxPoint(getLayoutValue(pos.x), getLayoutValue(pos.y));
 }
 /***********************************************************************//**
-	@brief
+	@brief 牌単位のサイズから実数値のサイズを取得する
+  @param[in] size 牌単位のサイズ
+  @return 実数値のサイズ
 ***************************************************************************/
 wxSize LayoutRenderer::getSize(const LayoutSize& size) const {
   return wxSize(getLayoutValue(size.width), getLayoutValue(size.height));
 }
 /***********************************************************************//**
-	@brief 
+	@brief 牌単位の矩形から実数値の矩形を取得する
+  @param[in] size 牌単位の矩形
+  @return 実数値の矩形
 ***************************************************************************/
 wxRect LayoutRenderer::getRect(const LayoutRect& rect) const {
   return wxRect(getPos(rect.pos), getSize(rect.size));
 }
 /***********************************************************************//**
-	@brief 
+	@brief 指定範囲を基準とした位置座標を取得する
+  @param[in] layoutRect 描画範囲の短形
+  @param[in] pos 全体を基準とした位置座標
+  @return 指定範囲を基準とした位置座標
 ***************************************************************************/
 wxPoint LayoutRenderer::getIndex(const LayoutRect& layoutRect, 
                                  const wxPoint& pos) const {
@@ -172,7 +186,9 @@ wxPoint LayoutRenderer::getIndex(const LayoutRect& layoutRect,
                  std::floor(float(pos.y - rect.y) / rect.height));
 }
 /***********************************************************************//**
-	@brief 
+	@brief 牌単位の数値から実数値を求める
+  @param[in] layout 牌単位の数値
+  @return 実数値
 ***************************************************************************/
 int LayoutRenderer::getLayoutValue(const LayoutValue& layout) const {
   wxASSERT(haiImage_);
@@ -181,14 +197,17 @@ int LayoutRenderer::getLayoutValue(const LayoutValue& layout) const {
     layout.margin * MARGIN;
 }
 /***********************************************************************//**
-	@brief 
+	@brief デバイスコンテキストの取得
 ***************************************************************************/
 wxDC& LayoutRenderer::getDc() const {
   wxASSERT(dc_);
   return *dc_;
 }
 /***********************************************************************//**
-	@brief 
+	@brief 画像の色を変更する
+  @param[in] bitmap 画像
+  @param[in] color 色
+  @return 変更した画像のコピー
 ***************************************************************************/
 wxBitmap LayoutRenderer::ApplyColor(const wxBitmap& bitmap, 
                                     const wxColour& color) {
