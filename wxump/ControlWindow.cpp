@@ -46,7 +46,7 @@ ControlWindow::ControlWindow(wxWindow* parent,
                              std::shared_ptr<Client> client)
   : super(parent),
     client_(client),
-    selected_(INVALID_SELECT)
+    choice_(INVALID_SELECT)
 {
   createButton();
   SetBackgroundColour(wxColour(0, 128, 0));
@@ -80,10 +80,12 @@ void ControlWindow::onReceiveCommand(const ump::Command& command) {
     doAutoSutehai(command);
     doAutoAgari(command);
     setButtonEnable(command);
+    setChoice(INVALID_SELECT);
     break;
   case ump::Command::TYPE_TSUMO:
   case ump::Command::TYPE_SUTEHAI:
     setButtonDisable();
+    setChoice(INVALID_SELECT);
     break;
   case ump::Command::TYPE_TENPAI_Q:
     doAutoSayTenpai(command);
@@ -96,7 +98,7 @@ void ControlWindow::onReceiveCommand(const ump::Command& command) {
 	@brief 牌を選択した
 	@param[in] index インデックス
 ***************************************************************************/
-size_t ControlWindow::onSelectHai(size_t index) {
+void ControlWindow::onSelectHai(size_t index) {
   auto client = getClient();
   auto player = client->getPlayer();
   auto menzen(player->getMenzen());
@@ -124,17 +126,17 @@ size_t ControlWindow::onSelectHai(size_t index) {
     break;
   case ump::Command::TYPE_NAKI_Q:
     if(isToggle(BUTTON_PON) || isToggle(BUTTON_CHI)) {
-      if(selected_ == INVALID_SELECT) {
-        setSelected(index);
+      if(choice_ == INVALID_SELECT) {
+        setChoice(index);
       }
-      else if(selected_ == index) {
-        setSelected(INVALID_SELECT);
+      else if(choice_ == index) {
+        setChoice(INVALID_SELECT);
       }
       else {
         auto hai = ump::mj::Hai::Get(client->getCommand().
                                       getArg(0).c_str());
         ump::mj::HaiArray hais;
-        hais.append(menzen.at(selected_)).
+        hais.append(menzen.at(choice_)).
              append(menzen.at(index));
         if(isToggle(BUTTON_PON)) {
           if(player->canPon(hais, hai)) {
@@ -150,14 +152,13 @@ size_t ControlWindow::onSelectHai(size_t index) {
           }
           setToggle(BUTTON_CHI, false);
         }
-        setSelected(INVALID_SELECT);
+        setChoice(INVALID_SELECT);
       }
     }
     break;
   default:
     break;
   }
-  return selected_;
 }
 /***********************************************************************//**
 	@brief キャンセルした
@@ -167,6 +168,7 @@ void ControlWindow::onCancel() {
   switch(client->getCommand().getType()) {
   case ump::Command::TYPE_NAKI_Q:
     doReply(ump::Command(ump::Command::TYPE_NO));
+    setChoice(INVALID_SELECT);
     break;
   case ump::Command::TYPE_READY_Q:
     doReply(ump::Command(ump::Command::TYPE_YES));
@@ -273,8 +275,9 @@ void ControlWindow::setButtonDisable() {
 /***********************************************************************//**
 	@brief
 ***************************************************************************/
-void ControlWindow::setSelected(size_t index) {
-  selected_ = index;
+void ControlWindow::setChoice(size_t index) {
+  choice_ = index;
+  Application::Get()->setChoice(choice_);
 }
 /***********************************************************************//**
 	@brief ポンボタンを押した処理

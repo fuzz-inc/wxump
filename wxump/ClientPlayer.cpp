@@ -51,8 +51,7 @@ static const LayoutSize INFO_SIZE(HEIGHT, HEIGHT);
 ClientPlayer::ClientPlayer(std::shared_ptr<Client> client, 
                            std::shared_ptr<const ump::mj::Player> player)
 : super(client, player),
-  cursorIndex_(INVALID_SELECT),
-  nakiIndex_(INVALID_SELECT)
+  cursorIndex_(INVALID_SELECT)
 {
   
 }
@@ -81,7 +80,7 @@ void ClientPlayer::onMouse(const LayoutRenderer& renderer,
      index.x < getPlayer()->getMenzen().size()) {
     setCursorIndex(index.x);
     if(event.LeftDown()) {
-      setNakiIndex(Application::Get()->onSelectHai(index.x));
+      Application::Get()->onSelectHai(index.x);
     }
   }
   else {
@@ -127,7 +126,8 @@ void ClientPlayer::renderHais(LayoutRenderer& renderer,
   HandRenderer hand(getClient(), getPlayer());
   hand.renderKawa(renderer, offset);
   LayoutPos pos = offset + LayoutSize(LayoutValue(), LayoutValue(0, 1, 1));
-  hand.renderMenzen(renderer, pos, getCursorIndex(), getNakiIndex());
+  hand.renderMenzen(renderer, pos, getCursorIndex(),
+                    Application::Get()->getChoice());
   pos = pos +
         LayoutSize((ResultWindow::GetWinSize().width -
                     LayoutValue(1, 0, 0)),

@@ -41,7 +41,6 @@ class ClientPlayer : public Player {
   typedef Player super;
  private:
   size_t cursorIndex_;
-  size_t nakiIndex_;
   
  public:
   ClientPlayer(std::shared_ptr<Client> client, 
@@ -54,7 +53,6 @@ class ClientPlayer : public Player {
   
  private:
   UMP_ACCESSOR(CursorIndex, cursorIndex_);
-  UMP_ACCESSOR(NakiIndex, nakiIndex_);
   
   void renderInfo(LayoutRenderer& renderer, 
                   const LayoutPos& offset) override;

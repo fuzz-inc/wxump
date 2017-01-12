@@ -59,6 +59,7 @@ class Application
   std::mutex mutex_;
   int fps_;
   std::vector<Listener*> listeners_;
+  size_t choice_;
 
  public:
   Application();
@@ -87,11 +88,13 @@ class Application
   const int getFPS() const {
     return fps_;
   }
+  
+  UMP_ACCESSOR(Choice, choice_);
 
   void attachListener(Listener* listener);
 
   void onReceiveCommand(const ump::Command& command);
-  size_t onSelectHai(size_t index);
+  void onSelectHai(size_t index);
   void onCancel();
 
   void changeHaiSize(HaiSize size);
@@ -123,9 +126,7 @@ class Application::Listener {
   /**
    *
    */
-  virtual size_t onSelectHai(size_t index) {
-    return std::numeric_limits<size_t>::max();
-  }
+  virtual void onSelectHai(size_t index){}
 
   /**
    *

@@ -44,7 +44,8 @@ static const size_t INVALID_SELECT  = std::numeric_limits<size_t>::max();
 Application::Application()
   : mainFrame_(nullptr), 
     mjConfig_(std::make_shared<ump::server::Config>()),
-    fps_(30)
+    fps_(30),
+    choice_(INVALID_SELECT)
 {
 }
 /***********************************************************************//**
@@ -70,21 +71,18 @@ void Application::attachListener(Listener* listener) {
 ***************************************************************************/
 void Application::onReceiveCommand(const ump::Command& command) {
   CallAfter([&, command]() {
-      for(auto listener : listeners_) {
-        listener->onReceiveCommand(command);
-      }
-    });
+    for(auto listener : listeners_) {
+      listener->onReceiveCommand(command);
+    }
+  });
 }
 /***********************************************************************//**
 	@brief 牌選択処理
 ***************************************************************************/
-size_t Application::onSelectHai(size_t index) {
-  size_t ret = INVALID_SELECT;
+void Application::onSelectHai(size_t index) {
   for(auto listener : listeners_) {
-    size_t num = listener->onSelectHai(index);
-    ret = (num != INVALID_SELECT) ? num : ret;
+    listener->onSelectHai(index);
   }
-  return ret;
 }
 /***********************************************************************//**
 	@brief キャンセルボタン処理

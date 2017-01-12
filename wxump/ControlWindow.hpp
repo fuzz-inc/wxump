@@ -47,7 +47,7 @@ class ControlWindow
  private:
   std::shared_ptr<Client> client_;
   std::map<int, wxAnyButton*> buttons_;
-  size_t selected_;
+  size_t choice_;
   
  public:
   ControlWindow(wxWindow* parent,
@@ -56,7 +56,7 @@ class ControlWindow
   
  protected:
   void onReceiveCommand(const ump::Command& command) override;
-  size_t onSelectHai(size_t index) override;
+  void onSelectHai(size_t index) override;
   void onCancel() override;
 
  private:
@@ -79,7 +79,7 @@ class ControlWindow
   void setToggle(int id, bool value);
   bool isToggle(int id) const;
   void setSwitchToggle(int id);
-  void setSelected(size_t index);
+  void setChoice(size_t index);
   
   void doSutehai(const size_t& index);
   
