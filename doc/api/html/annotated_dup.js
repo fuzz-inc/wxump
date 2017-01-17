@@ -5,10 +5,12 @@ var annotated_dup =
       [ "Client", "classwxump_1_1_client.html", "classwxump_1_1_client" ],
       [ "Config", "classwxump_1_1_config.html", "classwxump_1_1_config" ],
       [ "ConfigDialog", "classwxump_1_1_config_dialog.html", "classwxump_1_1_config_dialog" ],
+      [ "ControlPlayer", "classwxump_1_1_control_player.html", "classwxump_1_1_control_player" ],
       [ "ControlWindow", "classwxump_1_1_control_window.html", "classwxump_1_1_control_window" ],
       [ "Conversion", "classwxump_1_1_conversion.html", null ],
       [ "HaiImage", "classwxump_1_1_hai_image.html", "classwxump_1_1_hai_image" ],
       [ "HaiObject", "classwxump_1_1_hai_object.html", "classwxump_1_1_hai_object" ],
+      [ "HaiRender", "classwxump_1_1_hai_render.html", "classwxump_1_1_hai_render" ],
       [ "LayoutPos", "classwxump_1_1_layout_pos.html", "classwxump_1_1_layout_pos" ],
       [ "LayoutRect", "classwxump_1_1_layout_rect.html", "classwxump_1_1_layout_rect" ],
       [ "LayoutRenderer", "classwxump_1_1_layout_renderer.html", "classwxump_1_1_layout_renderer" ],
@@ -19,6 +21,7 @@ var annotated_dup =
       [ "Player", "classwxump_1_1_player.html", "classwxump_1_1_player" ],
       [ "ResultWindow", "classwxump_1_1_result_window.html", "classwxump_1_1_result_window" ],
       [ "Server", "classwxump_1_1_server.html", "classwxump_1_1_server" ],
+      [ "TakuInfo", "classwxump_1_1_taku_info.html", "classwxump_1_1_taku_info" ],
       [ "TakuWindow", "classwxump_1_1_taku_window.html", "classwxump_1_1_taku_window" ]
     ] ]
 ];

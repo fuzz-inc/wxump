@@ -48,7 +48,7 @@ class TakuWindow
   wxTimer* timer_;
   std::shared_ptr<Client> client_;
   std::vector<std::shared_ptr<Player>> players_;
-  std::shared_ptr<ClientPlayer> clientPlayer_;
+  std::shared_ptr<ControlPlayer> controlPlayer_;
   ump::Command::Type type_;
   std::unique_ptr<TakuInfo> info_;
   std::unique_ptr<ResultWindow> result_;

@@ -6,6 +6,8 @@ var searchData=
   ['config_2ehpp',['Config.hpp',['../_config_8hpp.html',1,'']]],
   ['configdialog_2ecpp',['ConfigDialog.cpp',['../_config_dialog_8cpp.html',1,'']]],
   ['configdialog_2ehpp',['ConfigDialog.hpp',['../_config_dialog_8hpp.html',1,'']]],
+  ['controlplayer_2ecpp',['ControlPlayer.cpp',['../_control_player_8cpp.html',1,'']]],
+  ['controlplayer_2ehpp',['ControlPlayer.hpp',['../_control_player_8hpp.html',1,'']]],
   ['controlwindow_2ecpp',['ControlWindow.cpp',['../_control_window_8cpp.html',1,'']]],
   ['controlwindow_2ehpp',['ControlWindow.hpp',['../_control_window_8hpp.html',1,'']]],
   ['conversion_2ecpp',['Conversion.cpp',['../_conversion_8cpp.html',1,'']]],

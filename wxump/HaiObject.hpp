@@ -43,6 +43,7 @@ class HaiObject {
     FLAG_SELECTED,
     FLAG_TSUMOGIRI, 
     FLAG_RICHI,
+    FLAG_RICHIABLE,
     FLAG_NAKI,
     FLAG_NAKI_Q,
     FLAG_MAX
@@ -62,6 +63,7 @@ class HaiObject {
   UMP_BIT_ACCESSOR(Selected, flag_, FLAG_SELECTED);
   UMP_BIT_ACCESSOR(Tsumogiri, flag_, FLAG_TSUMOGIRI);
   UMP_BIT_ACCESSOR(Richi, flag_, FLAG_RICHI);
+  UMP_BIT_ACCESSOR(Richiable, flag_, FLAG_RICHIABLE);
   UMP_BIT_ACCESSOR(Naki, flag_, FLAG_NAKI);
   UMP_BIT_ACCESSOR(NakiQ, flag_, FLAG_NAKI_Q);
 };

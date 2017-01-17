@@ -54,13 +54,13 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 namespace wxump {
 class Application;
 class Client;
-class ClientPlayer;
 class Config;
+class ControlPlayer;
 class ControlWindow;
 class Conversion;
 class HaiImage;
 class HaiObject;
-class HandRenderer;
+class HaiRender;
 class LayoutPos;
 class LayoutRect;
 class LayoutRenderer;

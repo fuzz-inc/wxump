@@ -1,0 +1,352 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.12"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>wxump: wxump::HaiRender クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">wxump
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.12 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('classwxump_1_1_hai_render.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="classwxump_1_1_hai_render-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle">
+<div class="title">wxump::HaiRender クラス</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>牌の描画法をまとめたクラス  
+ <a href="classwxump_1_1_hai_render.html#details">[詳解]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_hai_render_8hpp_source.html">HaiRender.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:a5666a81f3bffaefdfdf264c5e36f3fab"><td class="memItemLeft" align="right" valign="top"><a id="a5666a81f3bffaefdfdf264c5e36f3fab"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>HaiRender</b> (<a class="el" href="classwxump_1_1_layout_renderer.html">LayoutRenderer</a> &amp;renderer, std::shared_ptr&lt; <a class="el" href="classwxump_1_1_client.html">Client</a> &gt; client=nullptr)</td></tr>
+<tr class="separator:a5666a81f3bffaefdfdf264c5e36f3fab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1c2925af9e5ce60b91b75ff16a17e96"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classwxump_1_1_layout_pos.html">LayoutPos</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwxump_1_1_hai_render.html#ac1c2925af9e5ce60b91b75ff16a17e96">renderKawa</a> (const <a class="el" href="classwxump_1_1_layout_pos.html">LayoutPos</a> &amp;offset, const ump::mj::Kawa &amp;kawa, bool isTurn=false, size_t alpha=255) const</td></tr>
+<tr class="memdesc:ac1c2925af9e5ce60b91b75ff16a17e96"><td class="mdescLeft">&#160;</td><td class="mdescRight">捨て牌の表示  <a href="#ac1c2925af9e5ce60b91b75ff16a17e96">[詳解]</a><br /></td></tr>
+<tr class="separator:ac1c2925af9e5ce60b91b75ff16a17e96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26b56a209d77ca2f0dada3b0c3d55adb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classwxump_1_1_layout_pos.html">LayoutPos</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwxump_1_1_hai_render.html#a26b56a209d77ca2f0dada3b0c3d55adb">renderMentsu</a> (const <a class="el" href="classwxump_1_1_layout_pos.html">LayoutPos</a> &amp;offset, const ump::mj::Mentsu &amp;mentsu) const</td></tr>
+<tr class="memdesc:a26b56a209d77ca2f0dada3b0c3d55adb"><td class="mdescLeft">&#160;</td><td class="mdescRight">メンツ表示  <a href="#a26b56a209d77ca2f0dada3b0c3d55adb">[詳解]</a><br /></td></tr>
+<tr class="separator:a26b56a209d77ca2f0dada3b0c3d55adb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cb7a996a045edfab2c663a728b0237c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classwxump_1_1_layout_pos.html">LayoutPos</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwxump_1_1_hai_render.html#a5cb7a996a045edfab2c663a728b0237c">renderMenzen</a> (const <a class="el" href="classwxump_1_1_layout_pos.html">LayoutPos</a> &amp;offset, const ump::mj::HaiArray &amp;menzen, size_t cursor=std::numeric_limits&lt; size_t &gt;::max(), size_t choice=std::numeric_limits&lt; size_t &gt;::max()) const</td></tr>
+<tr class="memdesc:a5cb7a996a045edfab2c663a728b0237c"><td class="mdescLeft">&#160;</td><td class="mdescRight">メンゼン表示  <a href="#a5cb7a996a045edfab2c663a728b0237c">[詳解]</a><br /></td></tr>
+<tr class="separator:a5cb7a996a045edfab2c663a728b0237c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefc2bcfe2ce597929cbd54379670e964"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classwxump_1_1_layout_pos.html">LayoutPos</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwxump_1_1_hai_render.html#aefc2bcfe2ce597929cbd54379670e964">renderLastSutehai</a> (const <a class="el" href="classwxump_1_1_layout_pos.html">LayoutPos</a> &amp;offset, const ump::mj::Sutehai &amp;hai) const</td></tr>
+<tr class="memdesc:aefc2bcfe2ce597929cbd54379670e964"><td class="mdescLeft">&#160;</td><td class="mdescRight">最後の捨て牌（ロン牌）表示  <a href="#aefc2bcfe2ce597929cbd54379670e964">[詳解]</a><br /></td></tr>
+<tr class="separator:aefc2bcfe2ce597929cbd54379670e964"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b540100619859dc432b3f983ccce33c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classwxump_1_1_layout_pos.html">LayoutPos</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwxump_1_1_hai_render.html#a7b540100619859dc432b3f983ccce33c">renderDora</a> (const <a class="el" href="classwxump_1_1_layout_pos.html">LayoutPos</a> &amp;offset, const ump::mj::HaiArray &amp;dora) const</td></tr>
+<tr class="memdesc:a7b540100619859dc432b3f983ccce33c"><td class="mdescLeft">&#160;</td><td class="mdescRight">ドラ表示  <a href="#a7b540100619859dc432b3f983ccce33c">[詳解]</a><br /></td></tr>
+<tr class="separator:a7b540100619859dc432b3f983ccce33c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><p>牌の描画法をまとめたクラス </p>
+</div><h2 class="groupheader">関数詳解</h2>
+<a id="a7b540100619859dc432b3f983ccce33c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b540100619859dc432b3f983ccce33c">&sect;&nbsp;</a></span>renderDora()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classwxump_1_1_layout_pos.html">LayoutPos</a> wxump::HaiRender::renderDora </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classwxump_1_1_layout_pos.html">LayoutPos</a> &amp;&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ump::mj::HaiArray &amp;&#160;</td>
+          <td class="paramname"><em>dora</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ドラ表示 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">offset</td><td>描画位置 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dora</td><td>ドラ牌 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac1c2925af9e5ce60b91b75ff16a17e96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1c2925af9e5ce60b91b75ff16a17e96">&sect;&nbsp;</a></span>renderKawa()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classwxump_1_1_layout_pos.html">LayoutPos</a> wxump::HaiRender::renderKawa </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classwxump_1_1_layout_pos.html">LayoutPos</a> &amp;&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ump::mj::Kawa &amp;&#160;</td>
+          <td class="paramname"><em>kawa</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isTurn</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>alpha</em> = <code>255</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>捨て牌の表示 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">offset</td><td>描画位置 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">kawa</td><td>牌 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">isTurn</td><td>描画するプレイヤーのターンならtrue </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">alpha</td><td>設定する透明度 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>描画後位置(右) </dd></dl>
+
+</div>
+</div>
+<a id="aefc2bcfe2ce597929cbd54379670e964"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefc2bcfe2ce597929cbd54379670e964">&sect;&nbsp;</a></span>renderLastSutehai()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classwxump_1_1_layout_pos.html">LayoutPos</a> wxump::HaiRender::renderLastSutehai </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classwxump_1_1_layout_pos.html">LayoutPos</a> &amp;&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ump::mj::Sutehai &amp;&#160;</td>
+          <td class="paramname"><em>hai</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>最後の捨て牌（ロン牌）表示 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">offset</td><td>描画位置 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">hai</td><td>ロン牌 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>次の描画位置（左へ） </dd></dl>
+
+</div>
+</div>
+<a id="a26b56a209d77ca2f0dada3b0c3d55adb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26b56a209d77ca2f0dada3b0c3d55adb">&sect;&nbsp;</a></span>renderMentsu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classwxump_1_1_layout_pos.html">LayoutPos</a> wxump::HaiRender::renderMentsu </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classwxump_1_1_layout_pos.html">LayoutPos</a> &amp;&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ump::mj::Mentsu &amp;&#160;</td>
+          <td class="paramname"><em>mentsu</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>メンツ表示 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">offset</td><td>描画位置 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">mentsu</td><td>メンツ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>描画後位置(左) </dd></dl>
+
+</div>
+</div>
+<a id="a5cb7a996a045edfab2c663a728b0237c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5cb7a996a045edfab2c663a728b0237c">&sect;&nbsp;</a></span>renderMenzen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classwxump_1_1_layout_pos.html">LayoutPos</a> wxump::HaiRender::renderMenzen </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classwxump_1_1_layout_pos.html">LayoutPos</a> &amp;&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ump::mj::HaiArray &amp;&#160;</td>
+          <td class="paramname"><em>menzen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>cursor</em> = <code>std::numeric_limits&lt;size_t&gt;::max()</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>choice</em> = <code>std::numeric_limits&lt;size_t&gt;::max()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>メンゼン表示 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">offset</td><td>描画位置 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">menzen</td><td>メンゼン牌 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">cursor</td><td>カーソルが指す牌番号 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">choice</td><td>鳴きで選択した牌番号 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>描画後位置(右) </dd></dl>
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>/Users/nagatomo/works/fjon/wxump/<a class="el" href="_hai_render_8hpp_source.html">HaiRender.hpp</a></li>
+<li>/Users/nagatomo/works/fjon/wxump/<a class="el" href="_hai_render_8cpp.html">HaiRender.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>wxump</b></li><li class="navelem"><a class="el" href="classwxump_1_1_hai_render.html">HaiRender</a></li>
+    <li class="footer">構築:
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.12 </li>
+  </ul>
+</div>
+</body>
+</html>

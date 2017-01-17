@@ -31,33 +31,42 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	@file
 ***************************************************************************/
 #pragma once
-#include "wxump/Player.hpp"
 
 namespace wxump {
 /***********************************************************************//**
-	@brief 操作プレイヤー
+	@brief 牌の描画法をまとめたクラス
 ***************************************************************************/
-class ClientPlayer : public Player {
-  typedef Player super;
+class HaiRender {
  private:
-  size_t cursorIndex_;
+  LayoutRenderer& renderer_;
+  const std::shared_ptr<Client> client_;
   
  public:
-  ClientPlayer(std::shared_ptr<Client> client, 
-               std::shared_ptr<const ump::mj::Player> player);
-  ~ClientPlayer();
+  HaiRender(LayoutRenderer& renderer,
+            std::shared_ptr<Client> client = nullptr)
+    : renderer_(renderer),
+      client_(client)
+  {}
+  ~HaiRender() = default;
   
-  void onMouse(const LayoutRenderer& renderer, 
-               const wxMouseEvent& event, 
-               const wxPoint& pos);
+  LayoutPos renderKawa(const LayoutPos& offset,
+                       const ump::mj::Kawa& kawa,
+                       bool isTurn = false,
+                       size_t alpha = 255) const;
+  LayoutPos renderMentsu(const LayoutPos& offset,
+                         const ump::mj::Mentsu& mentsu) const;
+  LayoutPos renderMenzen(const LayoutPos& offset,
+                         const ump::mj::HaiArray& menzen,
+                         const ump::mj::HaiArray& richiableHais = ump::mj::HaiArray(),
+                         size_t cursor = std::numeric_limits<size_t>::max(),
+                         size_t choice = std::numeric_limits<size_t>::max()
+                         ) const;
+  LayoutPos renderLastSutehai(const LayoutPos& offset,
+                              const ump::mj::Sutehai& hai) const;
   
- private:
-  UMP_ACCESSOR(CursorIndex, cursorIndex_);
-  
-  void renderInfo(LayoutRenderer& renderer, 
-                  const LayoutPos& offset) override;
-  void renderHais(LayoutRenderer& renderer,
-                  const LayoutPos& offset) const override;
+  LayoutPos renderDora(const LayoutPos& offset,
+                       const ump::mj::HaiArray& dora) const;
+
 };
 /***********************************************************************//**
 	$Id$

@@ -61,11 +61,26 @@ class Player {
   UMP_GETTER(Client, client_);
   UMP_GETTER(Player, player_);
 
-  virtual void renderInfo(LayoutRenderer& renderer,
-                          const LayoutPos& offset);
+  void renderInfo(LayoutRenderer& renderer,
+                  const LayoutPos& offset);
+  void renderHais(LayoutRenderer& renderer,
+                  const LayoutPos& offset) const;
+  void renderComment(LayoutRenderer& renderer,
+                     const LayoutPos& offset) const;
   
-  virtual void renderHais(LayoutRenderer& renderer,
+  void renderName(LayoutRenderer& renderer,
+                  const LayoutPos& offset,
+                  const LayoutSize& size) const;
+  virtual void renderPoint(LayoutRenderer& renderer,
+                           const LayoutPos& offset,
+                           const LayoutSize& size) const;
+  
+  virtual void renderKawa(HaiRender& render,
                           const LayoutPos& offset) const;
+  virtual void renderMenzen(HaiRender& render,
+                            const LayoutPos& offset) const;
+  void renderMentsu(HaiRender& renderer,
+                    const LayoutPos& offset) const;
   
   const bool isTurn() const;
   

@@ -34,7 +34,7 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "wxump/Client.hpp"
 #include "wxump/Conversion.hpp"
 #include "wxump/HaiObject.hpp"
-#include "wxump/HandRenderer.hpp"
+#include "wxump/HaiRender.hpp"
 #include "wxump/Layout.hpp"
 #include "wxump/LayoutRenderer.hpp"
 #include "wxump/Player.hpp"
@@ -343,18 +343,22 @@ void ResultWindow::renderTitleText(LayoutRenderer& renderer,
 ***************************************************************************/
 void ResultWindow::renderAgariHais(LayoutRenderer& renderer) {
   assert(getPlayer());
-  LayoutPos offset(LayoutValue(), cursor_.pos.y);
-  HandRenderer hand(getClient(), getPlayer());
-  hand.renderMenzen(renderer, offset);
-  offset = offset + LayoutSize((ResultWindow::GetWinSize().width -
-                                  LayoutValue(1, 0, 0)),
-                                LayoutValue());
-  offset = hand.renderRonHai(renderer, offset);
-  hand.renderAllMentsu(renderer, offset);
+  LayoutPos pos(LayoutValue(), cursor_.pos.y);
+  HaiRender render(renderer, getClient());
+  render.renderMenzen(pos, getPlayer()->getMenzen());
+  pos = pos + LayoutSize((ResultWindow::GetWinSize().width -
+                            LayoutValue(1, 0, 0)),
+                          LayoutValue());
+  pos = render.renderLastSutehai(pos, *getClient()->getLastSutehai());
+  for(size_t i = 0, n = getPlayer()->countMentsu(); i < n; i++) {
+    pos = render.renderMentsu(pos, getPlayer()->getMentsu(i));
+  }
   cursor_.pos.y += LayoutValue(0, 1, 1);
 }
 /***********************************************************************//**
-	@brief
+	@brief プレイヤーがクライアントプレイヤーか確認する
+  @param[in] player 確認するプレイヤー
+  @return クライアントプレイヤーならtrue
 ***************************************************************************/
 bool ResultWindow::isClientPlayer(
     std::shared_ptr<const ump::mj::Player> player) const{

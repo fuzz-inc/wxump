@@ -32,10 +32,10 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ***************************************************************************/
 #include "wxump/Application.hpp"
 #include "wxump/Client.hpp"
-#include "wxump/ClientPlayer.hpp"
+#include "wxump/ControlPlayer.hpp"
 #include "wxump/Conversion.hpp"
 #include "wxump/HaiObject.hpp"
-#include "wxump/HandRenderer.hpp"
+#include "wxump/HaiRender.hpp"
 #include "wxump/Layout.hpp"
 #include "wxump/LayoutRenderer.hpp"
 #include "wxump/Player.hpp"
@@ -48,8 +48,8 @@ static const LayoutSize INFO_SIZE(HEIGHT, HEIGHT);
 /***********************************************************************//**
 	@brief コンストラクタ
 ***************************************************************************/
-ClientPlayer::ClientPlayer(std::shared_ptr<Client> client, 
-                           std::shared_ptr<const ump::mj::Player> player)
+ControlPlayer::ControlPlayer(std::shared_ptr<Client> client,
+                             std::shared_ptr<const ump::mj::Player> player)
 : super(client, player),
   cursorIndex_(INVALID_SELECT)
 {
@@ -58,7 +58,7 @@ ClientPlayer::ClientPlayer(std::shared_ptr<Client> client,
 /***********************************************************************//**
 	@brief デストラクタ
 ***************************************************************************/
-ClientPlayer::~ClientPlayer() {
+ControlPlayer::~ControlPlayer() {
 
 }
 /***********************************************************************//**
@@ -67,7 +67,7 @@ ClientPlayer::~ClientPlayer() {
   @param[in] event マウスイベント
   @param[in] pos 描画部分のマウス位置
 ***************************************************************************/
-void ClientPlayer::onMouse(const LayoutRenderer& renderer,
+void ControlPlayer::onMouse(const LayoutRenderer& renderer,
                            const wxMouseEvent& event,
                            const wxPoint& pos) {
   static const LayoutRect MENZEN_RECT(LayoutPos(HEIGHT, 
@@ -88,51 +88,35 @@ void ClientPlayer::onMouse(const LayoutRenderer& renderer,
   }
 }
 /***********************************************************************//**
-	@copydoc Player::renderInfo
+	@copydoc Player::renderPoint
 ***************************************************************************/
-void ClientPlayer::renderInfo(LayoutRenderer& renderer,
-                        const LayoutPos& offset) {
-  static const LayoutSize MARGIN(LayoutValue(0, 0, 1), 
-                                 LayoutValue(0, 0, 1));
-  auto player = getPlayer();
-  auto pos = offset + MARGIN;
-  auto size = INFO_SIZE - MARGIN * 2;
-  renderer.renderRect(LayoutRect(pos, size), 
-                      wxColour(0, 0, 0, 64), 
-                      wxNullColour);
-  {
-    LayoutRect rect(pos, LayoutSize(size.width, LayoutValue(0, 0.5, 0)));
-    if(auto zikaze = player->getZikaze()) {
-      renderer.renderText(rect, Conversion::GetHaiString(zikaze) + "家",
-      isTurn() ? *wxYELLOW : *wxWHITE);
-    }
-    rect.pos.y += rect.size.height;
-    rect.size.height = LayoutValue(0, 0.25, 0);
-    renderer.renderText(rect, player->getName());
-  }
-  {
-    LayoutRect rect(pos + LayoutSize(LayoutValue(), size.height), 
-                    LayoutSize(size.width, LayoutValue(0, 0.5, 0)));
-    rect.pos.y -= rect.size.height;
-    renderer.renderText(rect, wxString::Format("%d", player->getPoint()), 
-                        *wxWHITE, 1.0f);
-  }
+void ControlPlayer::renderPoint(LayoutRenderer& renderer,
+                                const LayoutPos& offset,
+                                const LayoutSize& size) const {
+  LayoutRect rect(offset + LayoutSize(LayoutValue(), size.height),
+                  LayoutSize(size.width, LayoutValue(0, 0.5, 0)));
+  rect.pos.y -= rect.size.height;
+  renderer.renderText(rect, wxString::Format("%d", getPlayer()->getPoint()),
+                      *wxWHITE, 1.0f);
 }
 /***********************************************************************//**
-	@copydoc Player::renderHais
+	@copydoc Player::renderKawa
 ***************************************************************************/
-void ClientPlayer::renderHais(LayoutRenderer& renderer,
-                              const LayoutPos& offset) const {
-  HandRenderer hand(getClient(), getPlayer());
-  hand.renderKawa(renderer, offset);
-  LayoutPos pos = offset + LayoutSize(LayoutValue(), LayoutValue(0, 1, 1));
-  hand.renderMenzen(renderer, pos, getCursorIndex(),
-                    Application::Get()->getChoice());
-  pos = pos +
-        LayoutSize((ResultWindow::GetWinSize().width -
-                    LayoutValue(1, 0, 0)),
-                    LayoutValue());
-  hand.renderAllMentsu(renderer, pos);
+void ControlPlayer::renderKawa(HaiRender& render,
+                               const LayoutPos& offset) const  {
+  render.renderKawa(offset, getPlayer()->getKawa());
+}
+/***********************************************************************//**
+	@copydoc Player::renderMenzen
+***************************************************************************/
+void ControlPlayer::renderMenzen(HaiRender& render,
+                                 const LayoutPos& offset) const {
+  render.renderMenzen(offset, getPlayer()->getMenzen(),
+                      (getPlayer()->canRichi())
+                      ? getPlayer()->getRichiableHai()
+                      : ump::mj::HaiArray(),
+                      getCursorIndex(),
+                      Application::Get()->getChoice());
 }
 /***********************************************************************//**
 	$Id$

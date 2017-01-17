@@ -31,45 +31,38 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	@file
 ***************************************************************************/
 #pragma once
+#include "wxump/Player.hpp"
 
 namespace wxump {
 /***********************************************************************//**
-	@brief 牌を並べて描画する
+	@brief 操作プレイヤー
 ***************************************************************************/
-class HandRenderer {
+class ControlPlayer : public Player {
+  typedef Player super;
  private:
-  std::shared_ptr<Client> client_;
-  std::shared_ptr<const ump::mj::Hand> hand_;
+  size_t cursorIndex_;
   
  public:
-  HandRenderer(std::shared_ptr<Client> client,
-                std::shared_ptr<const ump::mj::Hand> hand);
-  ~HandRenderer();
-
-  void renderMenzen(LayoutRenderer& renderer,
-                    const LayoutPos& offset,
-                    size_t index = std::numeric_limits<size_t>::max(),
-                    size_t selected = std::numeric_limits<size_t>::max())
-                    const;
+  ControlPlayer(std::shared_ptr<Client> client,
+                std::shared_ptr<const ump::mj::Player> player);
+  ~ControlPlayer();
   
-  void renderAllMentsu(LayoutRenderer& renderer,
-                    const LayoutPos& offset) const;
-  
-  void renderKawa(LayoutRenderer& renderer,
-                  const LayoutPos& offset,
-                  bool isTurn = false, size_t alpha = 255) const;
-  
-  LayoutPos renderRonHai(LayoutRenderer& renderer,
-                          const LayoutPos& offset) const;
+  void onMouse(const LayoutRenderer& renderer, 
+               const wxMouseEvent& event, 
+               const wxPoint& pos);
   
  private:
-  UMP_GETTER(Client, client_);
-  UMP_GETTER(Hand, hand_);
-  LayoutPos renderMentsu(LayoutRenderer& renderer,
-                            LayoutPos pos,
-                            const ump::mj::Mentsu& mentsu) const;
+  UMP_ACCESSOR(CursorIndex, cursorIndex_);
   
+  void renderPoint(LayoutRenderer& renderer,
+                   const LayoutPos& offset,
+                   const LayoutSize& size) const override;
   
+  void renderKawa(HaiRender& render,
+                  const LayoutPos& offset) const override;
+  
+  void renderMenzen(HaiRender& render,
+                    const LayoutPos& offset) const override;
 };
 /***********************************************************************//**
 	$Id$

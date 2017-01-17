@@ -32,7 +32,7 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ***************************************************************************/
 #include "wxump/Application.hpp"
 #include "wxump/Client.hpp"
-#include "wxump/ClientPlayer.hpp"
+#include "wxump/ControlPlayer.hpp"
 #include "wxump/ControlWindow.hpp"
 #include "wxump/Conversion.hpp"
 #include "wxump/HaiObject.hpp"
@@ -152,12 +152,12 @@ void TakuWindow::onMouse(wxMouseEvent& event) {
   auto& renderer = Application::Get()->getLayoutRenderer();
   LayoutRect rect(LayoutPos(LayoutValue(), TakuInfo::GetHeight()),
                   Player::GetSize());
-  if(clientPlayer_) {
+  if(controlPlayer_) {
     for(int i = 0, n = static_cast<int>(players_.size() - 1); i < n; i++) {
       rect.pos.y += rect.size.height;
     }
     auto renderRect = renderer.getRect(rect);
-    clientPlayer_->onMouse(renderer, event, pos - renderRect.GetPosition());
+    controlPlayer_->onMouse(renderer, event, pos - renderRect.GetPosition());
   }
   if(event.RightDown()) {
     Application::Get()->onCancel();
@@ -188,8 +188,8 @@ void TakuWindow::onGameStart() {
   players_.clear();
   for(auto player : getClient()->getPlayers()) {
     if(getClient()->getPlayer() == player) {
-      clientPlayer_ = std::make_shared<ClientPlayer>(getClient(), player);
-      players_.push_back(clientPlayer_);
+      controlPlayer_ = std::make_shared<ControlPlayer>(getClient(), player);
+      players_.push_back(controlPlayer_);
     }
     else {
       players_.push_back(std::make_shared<Player>(getClient(), player));

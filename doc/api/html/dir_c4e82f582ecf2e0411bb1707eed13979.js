@@ -17,6 +17,10 @@ var dir_c4e82f582ecf2e0411bb1707eed13979 =
     [ "ConfigDialog.hpp", "_config_dialog_8hpp.html", [
       [ "ConfigDialog", "classwxump_1_1_config_dialog.html", "classwxump_1_1_config_dialog" ]
     ] ],
+    [ "ControlPlayer.cpp", "_control_player_8cpp.html", null ],
+    [ "ControlPlayer.hpp", "_control_player_8hpp.html", [
+      [ "ControlPlayer", "classwxump_1_1_control_player.html", "classwxump_1_1_control_player" ]
+    ] ],
     [ "ControlWindow.cpp", "_control_window_8cpp.html", null ],
     [ "ControlWindow.hpp", "_control_window_8hpp.html", [
       [ "ControlWindow", "classwxump_1_1_control_window.html", "classwxump_1_1_control_window" ]
@@ -31,6 +35,10 @@ var dir_c4e82f582ecf2e0411bb1707eed13979 =
     ] ],
     [ "HaiObject.hpp", "_hai_object_8hpp.html", [
       [ "HaiObject", "classwxump_1_1_hai_object.html", "classwxump_1_1_hai_object" ]
+    ] ],
+    [ "HaiRender.cpp", "_hai_render_8cpp.html", null ],
+    [ "HaiRender.hpp", "_hai_render_8hpp.html", [
+      [ "HaiRender", "classwxump_1_1_hai_render.html", "classwxump_1_1_hai_render" ]
     ] ],
     [ "header.hpp", "header_8hpp.html", null ],
     [ "Id.hpp", "_id_8hpp.html", "_id_8hpp" ],
@@ -57,13 +65,17 @@ var dir_c4e82f582ecf2e0411bb1707eed13979 =
     [ "Player.hpp", "_player_8hpp.html", [
       [ "Player", "classwxump_1_1_player.html", "classwxump_1_1_player" ]
     ] ],
-    [ "ResultWindow.cpp", "_result_window_8cpp.html", null ],
+    [ "ResultWindow.cpp", "_result_window_8cpp.html", "_result_window_8cpp" ],
     [ "ResultWindow.hpp", "_result_window_8hpp.html", [
       [ "ResultWindow", "classwxump_1_1_result_window.html", "classwxump_1_1_result_window" ]
     ] ],
     [ "Server.cpp", "_server_8cpp.html", null ],
     [ "Server.hpp", "_server_8hpp.html", [
       [ "Server", "classwxump_1_1_server.html", "classwxump_1_1_server" ]
+    ] ],
+    [ "TakuInfo.cpp", "_taku_info_8cpp.html", null ],
+    [ "TakuInfo.hpp", "_taku_info_8hpp.html", [
+      [ "TakuInfo", "classwxump_1_1_taku_info.html", "classwxump_1_1_taku_info" ]
     ] ],
     [ "TakuWindow.cpp", "_taku_window_8cpp.html", null ],
     [ "TakuWindow.hpp", "_taku_window_8hpp.html", [

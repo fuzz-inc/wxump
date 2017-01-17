@@ -118,6 +118,10 @@ wxump::Application の継承関係図</div>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
+<tr class="memitem:aa214267e1c947f9150ed3aa7da293f9e"><td class="memItemLeft" align="right" valign="top"><a id="aa214267e1c947f9150ed3aa7da293f9e"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwxump_1_1_application.html#aa214267e1c947f9150ed3aa7da293f9e">Application</a> ()</td></tr>
+<tr class="memdesc:aa214267e1c947f9150ed3aa7da293f9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ <br /></td></tr>
+<tr class="separator:aa214267e1c947f9150ed3aa7da293f9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab52d51346a38d82df9f7593ee0305223"><td class="memItemLeft" align="right" valign="top"><a id="ab52d51346a38d82df9f7593ee0305223"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwxump_1_1_application.html#ab52d51346a38d82df9f7593ee0305223">~Application</a> () override</td></tr>
 <tr class="memdesc:ab52d51346a38d82df9f7593ee0305223"><td class="mdescLeft">&#160;</td><td class="mdescRight">デストラクタ <br /></td></tr>
@@ -143,6 +147,9 @@ std::mutex &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getMutex<
 <tr class="memitem:a6130b47f12a249bbb52c28521c28c0cb"><td class="memItemLeft" align="right" valign="top"><a id="a6130b47f12a249bbb52c28521c28c0cb"></a>
 const int&#160;</td><td class="memItemRight" valign="bottom"><b>getFPS</b> () const</td></tr>
 <tr class="separator:a6130b47f12a249bbb52c28521c28c0cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0709c6fc98c81fdefe66b40e0ad00b70"><td class="memItemLeft" align="right" valign="top"><a id="a0709c6fc98c81fdefe66b40e0ad00b70"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>UMP_ACCESSOR</b> (Choice, choice_)</td></tr>
+<tr class="separator:a0709c6fc98c81fdefe66b40e0ad00b70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6860e1ba884ec0b0d3de7dfbb3338f20"><td class="memItemLeft" align="right" valign="top"><a id="a6860e1ba884ec0b0d3de7dfbb3338f20"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwxump_1_1_application.html#a6860e1ba884ec0b0d3de7dfbb3338f20">attachListener</a> (<a class="el" href="classwxump_1_1_application_1_1_listener.html">Listener</a> *listener)</td></tr>
 <tr class="memdesc:a6860e1ba884ec0b0d3de7dfbb3338f20"><td class="mdescLeft">&#160;</td><td class="mdescRight">リスナーを登録する <br /></td></tr>
@@ -151,10 +158,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><b>onReceiveCommand</b> (const ump::Command &amp;command)</td></tr>
 <tr class="separator:aa4400d6fe836e9ef582bd330acad9337"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d1d46090649a053250ebd0a6ddeed0c"><td class="memItemLeft" align="right" valign="top"><a id="a9d1d46090649a053250ebd0a6ddeed0c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>onSelectHai</b> (size_t index)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwxump_1_1_application.html#a9d1d46090649a053250ebd0a6ddeed0c">onSelectHai</a> (size_t index)</td></tr>
+<tr class="memdesc:a9d1d46090649a053250ebd0a6ddeed0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">牌選択処理 <br /></td></tr>
 <tr class="separator:a9d1d46090649a053250ebd0a6ddeed0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad75f3f2633eeab8b74646df01493236e"><td class="memItemLeft" align="right" valign="top"><a id="ad75f3f2633eeab8b74646df01493236e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>onCancel</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwxump_1_1_application.html#ad75f3f2633eeab8b74646df01493236e">onCancel</a> ()</td></tr>
+<tr class="memdesc:ad75f3f2633eeab8b74646df01493236e"><td class="mdescLeft">&#160;</td><td class="mdescRight">キャンセルボタン処理 <br /></td></tr>
 <tr class="separator:ad75f3f2633eeab8b74646df01493236e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17c6de44cbab06a78cc956bab2c7668f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwxump_1_1_application.html#a17c6de44cbab06a78cc956bab2c7668f">changeHaiSize</a> (HaiSize size)</td></tr>
 <tr class="memdesc:a17c6de44cbab06a78cc956bab2c7668f"><td class="mdescLeft">&#160;</td><td class="mdescRight">牌のサイズを変更する  <a href="#a17c6de44cbab06a78cc956bab2c7668f">[詳解]</a><br /></td></tr>
@@ -212,8 +221,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>OnExit</b> () override
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>/Users/nagatomo/works/wxump/wxump/<a class="el" href="_application_8hpp_source.html">Application.hpp</a></li>
-<li>/Users/nagatomo/works/wxump/wxump/<a class="el" href="_application_8cpp.html">Application.cpp</a></li>
+<li>/Users/nagatomo/works/fjon/wxump/<a class="el" href="_application_8hpp_source.html">Application.hpp</a></li>
+<li>/Users/nagatomo/works/fjon/wxump/<a class="el" href="_application_8cpp.html">Application.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

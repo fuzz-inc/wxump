@@ -6,6 +6,7 @@ var hierarchy =
     [ "wxump::Conversion", "classwxump_1_1_conversion.html", null ],
     [ "wxump::HaiImage", "classwxump_1_1_hai_image.html", null ],
     [ "wxump::HaiObject", "classwxump_1_1_hai_object.html", null ],
+    [ "wxump::HaiRender", "classwxump_1_1_hai_render.html", null ],
     [ "wxump::LayoutPos", "classwxump_1_1_layout_pos.html", null ],
     [ "wxump::LayoutRect", "classwxump_1_1_layout_rect.html", null ],
     [ "wxump::LayoutRenderer", "classwxump_1_1_layout_renderer.html", null ],
@@ -15,9 +16,12 @@ var hierarchy =
       [ "wxump::ControlWindow", "classwxump_1_1_control_window.html", null ],
       [ "wxump::MainFrame", "classwxump_1_1_main_frame.html", null ],
       [ "wxump::ResultWindow", "classwxump_1_1_result_window.html", null ],
+      [ "wxump::TakuInfo", "classwxump_1_1_taku_info.html", null ],
       [ "wxump::TakuWindow", "classwxump_1_1_taku_window.html", null ]
     ] ],
-    [ "wxump::Player", "classwxump_1_1_player.html", null ],
+    [ "wxump::Player", "classwxump_1_1_player.html", [
+      [ "wxump::ControlPlayer", "classwxump_1_1_control_player.html", null ]
+    ] ],
     [ "Server", null, [
       [ "wxump::Server", "classwxump_1_1_server.html", null ]
     ] ],

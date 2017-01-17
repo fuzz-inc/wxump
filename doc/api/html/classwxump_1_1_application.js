@@ -23,5 +23,6 @@ var classwxump_1_1_application =
     [ "OnInitCmdLine", "classwxump_1_1_application.html#aaa2963a32a9c5a5904db8e23a5e1ebea", null ],
     [ "onReceiveCommand", "classwxump_1_1_application.html#aa4400d6fe836e9ef582bd330acad9337", null ],
     [ "onSelectHai", "classwxump_1_1_application.html#a9d1d46090649a053250ebd0a6ddeed0c", null ],
+    [ "UMP_ACCESSOR", "classwxump_1_1_application.html#a0709c6fc98c81fdefe66b40e0ad00b70", null ],
     [ "UMP_GETTER", "classwxump_1_1_application.html#a5c0a74f66314ddbcf5b72f262da2b1b8", null ]
 ];

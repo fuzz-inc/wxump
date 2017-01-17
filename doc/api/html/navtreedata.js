@@ -19,7 +19,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-".html"
+".html",
+"classwxump_1_1_player.html#a5d33128269b178ad4d40c756338718d0"
 ];
 
 var SYNCONMSG = 'クリックで同期表示が無効になります';

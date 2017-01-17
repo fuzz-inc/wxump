@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		264387931DF07C8000604DE7 /* LayoutRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 264387911DF07C8000604DE7 /* LayoutRenderer.cpp */; };
-		4B2F7CA11E07E83A00F51A0B /* ClientPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B2F7C9F1E07E83A00F51A0B /* ClientPlayer.cpp */; };
+		4B2F7CA11E07E83A00F51A0B /* ControlPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B2F7C9F1E07E83A00F51A0B /* ControlPlayer.cpp */; };
 		4BA65D931DA633BB008BC581 /* ResultWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA65D911DA633BB008BC581 /* ResultWindow.cpp */; };
 		4BA65D961DA65C8D008BC581 /* TakuWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA65D941DA65C8D008BC581 /* TakuWindow.cpp */; };
 		4BAAF96E1DC20C6500A74C05 /* Conversion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BAAF96C1DC20C6500A74C05 /* Conversion.cpp */; };
-		4BC0B8401E262E7C00AE33D9 /* HandRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BC0B83E1E262E7C00AE33D9 /* HandRenderer.cpp */; };
+		4BD00C3A1E279D130088245A /* HaiRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BD00C381E279D130088245A /* HaiRender.cpp */; };
 		4BD8C5441E091E1500732076 /* TakuInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8C5421E091E1500732076 /* TakuInfo.cpp */; };
 		4BEC90BB1DE7FBEA00701853 /* ControlWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BEC90B91DE7FBEA00701853 /* ControlWindow.cpp */; };
 		DA2FFD401D9CDEFA00C38A00 /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA2FFD3E1D9CDEFA00C38A00 /* Config.cpp */; };
@@ -45,8 +45,8 @@
 		2643878D1DF0755800604DE7 /* HaiObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HaiObject.hpp; sourceTree = "<group>"; };
 		264387911DF07C8000604DE7 /* LayoutRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LayoutRenderer.cpp; sourceTree = "<group>"; };
 		264387921DF07C8000604DE7 /* LayoutRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LayoutRenderer.hpp; sourceTree = "<group>"; };
-		4B2F7C9F1E07E83A00F51A0B /* ClientPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClientPlayer.cpp; sourceTree = "<group>"; };
-		4B2F7CA01E07E83A00F51A0B /* ClientPlayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ClientPlayer.hpp; sourceTree = "<group>"; };
+		4B2F7C9F1E07E83A00F51A0B /* ControlPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlPlayer.cpp; sourceTree = "<group>"; };
+		4B2F7CA01E07E83A00F51A0B /* ControlPlayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ControlPlayer.hpp; sourceTree = "<group>"; };
 		4BA65D911DA633BB008BC581 /* ResultWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ResultWindow.cpp; sourceTree = "<group>"; };
 		4BA65D921DA633BB008BC581 /* ResultWindow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ResultWindow.hpp; sourceTree = "<group>"; };
 		4BA65D941DA65C8D008BC581 /* TakuWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TakuWindow.cpp; sourceTree = "<group>"; };
@@ -54,8 +54,8 @@
 		4BAAF96C1DC20C6500A74C05 /* Conversion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Conversion.cpp; sourceTree = "<group>"; };
 		4BAAF96D1DC20C6500A74C05 /* Conversion.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Conversion.hpp; sourceTree = "<group>"; };
 		4BAE3D3C1DED97F700E69A9F /* Layout.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Layout.hpp; sourceTree = "<group>"; };
-		4BC0B83E1E262E7C00AE33D9 /* HandRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HandRenderer.cpp; sourceTree = "<group>"; };
-		4BC0B83F1E262E7C00AE33D9 /* HandRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HandRenderer.hpp; sourceTree = "<group>"; };
+		4BD00C381E279D130088245A /* HaiRender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HaiRender.cpp; sourceTree = "<group>"; };
+		4BD00C391E279D130088245A /* HaiRender.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HaiRender.hpp; sourceTree = "<group>"; };
 		4BD8C5421E091E1500732076 /* TakuInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TakuInfo.cpp; sourceTree = "<group>"; };
 		4BD8C5431E091E1500732076 /* TakuInfo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TakuInfo.hpp; sourceTree = "<group>"; };
 		4BEC90B91DE7FBEA00701853 /* ControlWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlWindow.cpp; sourceTree = "<group>"; };
@@ -159,8 +159,8 @@
 				DAACF23F1D8931BD009BECDE /* Application.hpp */,
 				DAACF2401D8931BD009BECDE /* Client.cpp */,
 				DAACF2411D8931BD009BECDE /* Client.hpp */,
-				4B2F7C9F1E07E83A00F51A0B /* ClientPlayer.cpp */,
-				4B2F7CA01E07E83A00F51A0B /* ClientPlayer.hpp */,
+				4B2F7C9F1E07E83A00F51A0B /* ControlPlayer.cpp */,
+				4B2F7CA01E07E83A00F51A0B /* ControlPlayer.hpp */,
 				DA2FFD3E1D9CDEFA00C38A00 /* Config.cpp */,
 				DA2FFD3F1D9CDEFA00C38A00 /* Config.hpp */,
 				DA2FFD411D9CFEF100C38A00 /* ConfigDialog.cpp */,
@@ -172,8 +172,8 @@
 				DAACF2421D8931BD009BECDE /* HaiImage.cpp */,
 				DAACF2431D8931BD009BECDE /* HaiImage.hpp */,
 				2643878D1DF0755800604DE7 /* HaiObject.hpp */,
-				4BC0B83E1E262E7C00AE33D9 /* HandRenderer.cpp */,
-				4BC0B83F1E262E7C00AE33D9 /* HandRenderer.hpp */,
+				4BD00C381E279D130088245A /* HaiRender.cpp */,
+				4BD00C391E279D130088245A /* HaiRender.hpp */,
 				DAACF2441D8931BD009BECDE /* header.hpp */,
 				4BAE3D3C1DED97F700E69A9F /* Layout.hpp */,
 				264387911DF07C8000604DE7 /* LayoutRenderer.cpp */,
@@ -293,7 +293,6 @@
 				4BA65D931DA633BB008BC581 /* ResultWindow.cpp in Sources */,
 				4BAAF96E1DC20C6500A74C05 /* Conversion.cpp in Sources */,
 				DA2FFD431D9CFEF100C38A00 /* ConfigDialog.cpp in Sources */,
-				4BC0B8401E262E7C00AE33D9 /* HandRenderer.cpp in Sources */,
 				DAACF24B1D8931BD009BECDE /* Client.cpp in Sources */,
 				DA2FFD401D9CDEFA00C38A00 /* Config.cpp in Sources */,
 				4BA65D961DA65C8D008BC581 /* TakuWindow.cpp in Sources */,
@@ -302,8 +301,9 @@
 				DA6D70271D9E37AE00FC46CF /* LogWindow.cpp in Sources */,
 				DAACF26B1D89490C009BECDE /* Server.cpp in Sources */,
 				DAACF24F1D8931BD009BECDE /* Player.cpp in Sources */,
+				4BD00C3A1E279D130088245A /* HaiRender.cpp in Sources */,
 				DAACF24D1D8931BD009BECDE /* main.cpp in Sources */,
-				4B2F7CA11E07E83A00F51A0B /* ClientPlayer.cpp in Sources */,
+				4B2F7CA11E07E83A00F51A0B /* ControlPlayer.cpp in Sources */,
 				DAACF24A1D8931BD009BECDE /* Application.cpp in Sources */,
 				DAACF24E1D8931BD009BECDE /* MainFrame.cpp in Sources */,
 			);
