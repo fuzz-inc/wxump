@@ -57,10 +57,10 @@ class Application
   std::shared_ptr<ump::server::Config> mjConfig_;
   std::unique_ptr<ump::server::Thread> server_;
   std::mutex mutex_;
-  int fps_;
   std::vector<Listener*> listeners_;
-  size_t choice_;
-
+  size_t choice_; /**< 選択した牌番号 */
+  int fps_;
+  
  public:
   Application();
   ~Application() override;

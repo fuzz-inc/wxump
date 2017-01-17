@@ -43,6 +43,7 @@ namespace wxump {
 static const LayoutValue HEIGHT(0, 1, 2);
 /***********************************************************************//**
 	@brief コンストラクタ
+  @param[in] client クライアント
 ***************************************************************************/
 TakuInfo::TakuInfo(std::shared_ptr<Client> client)
   : client_(client)

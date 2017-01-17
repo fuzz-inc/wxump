@@ -41,7 +41,7 @@ class Player {
   std::shared_ptr<Client> client_;
   std::shared_ptr<const ump::mj::Player> player_;
   wxString comment_;
-  int countTime_;
+  int countTime_; /**< 待機時間のカウント */
   
  public:
   Player(std::shared_ptr<Client> client, 

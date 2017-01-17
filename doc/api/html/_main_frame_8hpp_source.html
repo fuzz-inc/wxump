@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.12"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>wxump: /Users/nagatomo/works/fjon/wxump/MainFrame.hpp ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">wxump
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.12 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('_main_frame_8hpp_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">MainFrame.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_main_frame_8hpp.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">Copyright 2016 fuzz, Inc. All rights reserved. </span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">   http://www.fuzz.co.jp</span></div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"></span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">Redistribution and use in source and binary forms, with or without</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">modification, are permitted provided that the following conditions are met:</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"></span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">1. Redistributions of source code must retain the above copyright notice, </span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">   this list of conditions and the following disclaimer.</span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"></span></div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">2. Redistributions in binary form must reproduce the above copyright notice, </span></div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">   this list of conditions and the following disclaimer in the documentation </span></div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">   and/or other materials provided with the distribution.</span></div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"></span></div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">3. Neither the name of fuzz, Inc. nor the names of its contributors </span></div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">   may be used to endorse or promote products derived from this software </span></div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">   without specific prior written permission.</span></div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"></span></div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot;</span></div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, </span></div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR </span></div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL FUZZ, INC. BE LIABLE FOR ANY </span></div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL </span></div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR</span></div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span></div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,STRICT LIABILITY,</span></div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF </span></div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">*/</span></div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">/***********************************************************************/</span></div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#pragma once</span></div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_application_8hpp.html">wxump/Application.hpp</a>&quot;</span></div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacewxump.html">wxump</a> {</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">/***********************************************************************/</span></div><div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classwxump_1_1_main_frame.html">   41</a></span>&#160;<span class="keyword">class </span><a class="code" href="classwxump_1_1_main_frame.html">MainFrame</a></div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  : <span class="keyword">public</span> wxFrame, </div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">public</span> <a class="code" href="classwxump_1_1_application_1_1_listener.html">Application::Listener</a></div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keyword">typedef</span> wxFrame super;</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; <span class="keyword">private</span>:</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  std::shared_ptr&lt;Client&gt; client_;</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <a class="code" href="classwxump_1_1_taku_window.html">TakuWindow</a>* takuWindow_;</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <a class="code" href="classwxump_1_1_control_window.html">ControlWindow</a>* controlWindow_;</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <a class="code" href="classwxump_1_1_log_window.html">LogWindow</a>* log_;</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; <span class="keyword">public</span>:</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <a class="code" href="classwxump_1_1_main_frame.html#ad668aa2b15745015a4fe1218fe5962c7">MainFrame</a>();</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keyword">virtual</span> <a class="code" href="classwxump_1_1_main_frame.html#a85eeacc0b575312b05a295990546adf9">~MainFrame</a>();</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; <span class="keyword">protected</span>:</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classwxump_1_1_main_frame.html#a74f84942c07e34a18c0b4ce8f67bf20a">onReceiveCommand</a>(<span class="keyword">const</span> ump::Command&amp; command);</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classwxump_1_1_main_frame.html#a95ff9b53de81551603006327e92fb11b">onChangeLayout</a>(<span class="keyword">const</span> <a class="code" href="classwxump_1_1_layout_renderer.html">LayoutRenderer</a>&amp; renderer);</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; <span class="keyword">private</span>:</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  UMP_GETTER(<a class="code" href="classwxump_1_1_client.html">Client</a>, client_);</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keywordtype">void</span> setupMenuBar();</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keywordtype">void</span> setupToolBar();</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  wxButton* createButton(wxWindow* parent, </div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                         wxWindowID <span class="keywordtype">id</span>, </div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                         <span class="keyword">const</span> wxString&amp; label);</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordtype">void</span> onOpenMenu(wxMenuEvent&amp; event);</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordtype">void</span> onMenuSelect(wxCommandEvent&amp; event);</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  </div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keywordtype">void</span> doGameStart();</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;};</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">/***********************************************************************/</span></div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div><div class="ttc" id="classwxump_1_1_control_window_html"><div class="ttname"><a href="classwxump_1_1_control_window.html">wxump::ControlWindow</a></div><div class="ttdoc">ボタン操作を扱うクラス </div><div class="ttdef"><b>Definition:</b> ControlWindow.hpp:41</div></div>
+<div class="ttc" id="classwxump_1_1_layout_renderer_html"><div class="ttname"><a href="classwxump_1_1_layout_renderer.html">wxump::LayoutRenderer</a></div><div class="ttdoc">レイアウト描画 </div><div class="ttdef"><b>Definition:</b> LayoutRenderer.hpp:42</div></div>
+<div class="ttc" id="classwxump_1_1_application_1_1_listener_html"><div class="ttname"><a href="classwxump_1_1_application_1_1_listener.html">wxump::Application::Listener</a></div><div class="ttdef"><b>Definition:</b> Application.hpp:115</div></div>
+<div class="ttc" id="classwxump_1_1_main_frame_html"><div class="ttname"><a href="classwxump_1_1_main_frame.html">wxump::MainFrame</a></div><div class="ttdef"><b>Definition:</b> MainFrame.hpp:41</div></div>
+<div class="ttc" id="classwxump_1_1_log_window_html"><div class="ttname"><a href="classwxump_1_1_log_window.html">wxump::LogWindow</a></div><div class="ttdoc">ログウィンドウ </div><div class="ttdef"><b>Definition:</b> LogWindow.hpp:39</div></div>
+<div class="ttc" id="classwxump_1_1_main_frame_html_a74f84942c07e34a18c0b4ce8f67bf20a"><div class="ttname"><a href="classwxump_1_1_main_frame.html#a74f84942c07e34a18c0b4ce8f67bf20a">wxump::MainFrame::onReceiveCommand</a></div><div class="ttdeci">void onReceiveCommand(const ump::Command &amp;command)</div><div class="ttdef"><b>Definition:</b> MainFrame.cpp:69</div></div>
+<div class="ttc" id="classwxump_1_1_main_frame_html_ad668aa2b15745015a4fe1218fe5962c7"><div class="ttname"><a href="classwxump_1_1_main_frame.html#ad668aa2b15745015a4fe1218fe5962c7">wxump::MainFrame::MainFrame</a></div><div class="ttdeci">MainFrame()</div><div class="ttdoc">コンストラクタ </div><div class="ttdef"><b>Definition:</b> MainFrame.cpp:47</div></div>
+<div class="ttc" id="classwxump_1_1_client_html"><div class="ttname"><a href="classwxump_1_1_client.html">wxump::Client</a></div><div class="ttdoc">UMPクライアント </div><div class="ttdef"><b>Definition:</b> Client.hpp:39</div></div>
+<div class="ttc" id="classwxump_1_1_main_frame_html_a95ff9b53de81551603006327e92fb11b"><div class="ttname"><a href="classwxump_1_1_main_frame.html#a95ff9b53de81551603006327e92fb11b">wxump::MainFrame::onChangeLayout</a></div><div class="ttdeci">void onChangeLayout(const LayoutRenderer &amp;renderer)</div><div class="ttdef"><b>Definition:</b> MainFrame.cpp:81</div></div>
+<div class="ttc" id="classwxump_1_1_main_frame_html_a85eeacc0b575312b05a295990546adf9"><div class="ttname"><a href="classwxump_1_1_main_frame.html#a85eeacc0b575312b05a295990546adf9">wxump::MainFrame::~MainFrame</a></div><div class="ttdeci">virtual ~MainFrame()</div><div class="ttdoc">デストラクタ </div><div class="ttdef"><b>Definition:</b> MainFrame.cpp:64</div></div>
+<div class="ttc" id="classwxump_1_1_taku_window_html"><div class="ttname"><a href="classwxump_1_1_taku_window.html">wxump::TakuWindow</a></div><div class="ttdoc">卓クラス </div><div class="ttdef"><b>Definition:</b> TakuWindow.hpp:41</div></div>
+<div class="ttc" id="_application_8hpp_html"><div class="ttname"><a href="_application_8hpp.html">Application.hpp</a></div></div>
+<div class="ttc" id="namespacewxump_html"><div class="ttname"><a href="namespacewxump.html">wxump</a></div><div class="ttdef"><b>Definition:</b> Application.cpp:39</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_c4e82f582ecf2e0411bb1707eed13979.html">wxump</a></li><li class="navelem"><a class="el" href="_main_frame_8hpp.html">MainFrame.hpp</a></li>
+    <li class="footer">構築:
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.12 </li>
+  </ul>
+</div>
+</body>
+</html>

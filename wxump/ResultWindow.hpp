@@ -49,9 +49,9 @@ class ResultWindow
   std::shared_ptr<const ump::mj::Player> player_;
   std::unique_ptr<wxBitmap> bitmap_;
   LayoutRect cursor_;
-  size_t resultType_;
-  bool isResultPoint;
-  int addMargin_;
+  size_t resultType_; /**< リザルトの種類 */
+  bool canPointWrite_;  /**< trueの時受信したポイント移動を記録する */
+  int posBitmap_; /**< リザルト画像の位置 */
 
  public:
   ResultWindow(wxWindow* parent,
@@ -67,7 +67,7 @@ class ResultWindow
 
  private:
   UMP_GETTER(Client, client_);
-  UMP_ACCESSOR(IsResultPoint, isResultPoint);
+  UMP_ACCESSOR(CanPointWrite, canPointWrite_);
   
   void show();
   void hide();

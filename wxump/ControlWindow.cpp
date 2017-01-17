@@ -41,6 +41,8 @@ namespace wxump {
 static const size_t INVALID_SELECT  = std::numeric_limits<size_t>::max();
 /***********************************************************************//**
 	@brief コンストラクタ
+  @param[in] parent 親ウィンドウ
+  @param[in] client クライアント
 ***************************************************************************/
 ControlWindow::ControlWindow(wxWindow* parent,
                              std::shared_ptr<Client> client)
@@ -96,7 +98,7 @@ void ControlWindow::onReceiveCommand(const ump::Command& command) {
 }
 /***********************************************************************//**
 	@brief 牌を選択した
-	@param[in] index インデックス
+	@param[in] index 選択した牌の番号
 ***************************************************************************/
 void ControlWindow::onSelectHai(size_t index) {
   auto client = getClient();
@@ -273,7 +275,8 @@ void ControlWindow::setButtonDisable() {
   buttons_[BUTTON_AGARI]->SetLabel("アガリ");
 }
 /***********************************************************************//**
-	@brief
+	@brief 鳴き手動選択
+  @param[in] index 選択した牌番号
 ***************************************************************************/
 void ControlWindow::setChoice(size_t index) {
   choice_ = index;
@@ -464,7 +467,8 @@ void ControlWindow::setSwitchToggle(int id) {
   }
 }
 /***********************************************************************//**
-	@brief
+	@brief 牌を捨てる
+  @param[in] index 選択した牌番号
 ***************************************************************************/
 void ControlWindow::doSutehai(const size_t& index) {
   auto player = getClient()->getPlayer();

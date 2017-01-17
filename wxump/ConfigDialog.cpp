@@ -65,6 +65,7 @@ ConfigDialog::ConfigDialog(wxWindow* parent)
 }
 /***********************************************************************//**
 	@brief 
+  @param[in] id 
 ***************************************************************************/
 void ConfigDialog::EndModal(int id) {
   super::EndModal(id);

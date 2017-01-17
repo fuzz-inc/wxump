@@ -54,19 +54,21 @@ Config::Config()
 }
 /***********************************************************************//**
 	@brief 
+  @param[in] value
 ***************************************************************************/
 Config& Config::setHost(const wxString& value) {
   Write(HOST, value);
   return *this;
 }
 /***********************************************************************//**
-	@brief 
+	@brief
 ***************************************************************************/
 wxString Config::getHost() const {
   return Read(HOST, DEFAULT_HOST);
 }
 /***********************************************************************//**
 	@brief 
+  @param[in] port
 ***************************************************************************/
 Config& Config::setPort(int port) {
   Write(PORT, long(port));
@@ -82,6 +84,7 @@ int Config::getPort() const {
 }
 /***********************************************************************//**
 	@brief 
+  @param[in] value
 ***************************************************************************/
 Config& Config::setPerspective(const wxString& value) {
   Write(PERSPECTIVE, value);

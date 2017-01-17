@@ -49,10 +49,10 @@ class TakuWindow
   std::shared_ptr<Client> client_;
   std::vector<std::shared_ptr<Player>> players_;
   std::shared_ptr<ControlPlayer> controlPlayer_;
-  ump::Command::Type type_;
   std::unique_ptr<TakuInfo> info_;
   std::unique_ptr<ResultWindow> result_;
-  int countFlashTime_;
+  ump::Command::Type type_; /**< 受信したコマンドタイプ */
+  int countTime_; /**< 待機時間をカウント */
   
  public:
   TakuWindow(wxWindow* parent, std::shared_ptr<Client> client);

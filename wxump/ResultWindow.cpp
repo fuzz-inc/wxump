@@ -64,13 +64,15 @@ enum TOTAL{
 };
 /***********************************************************************//**
 	@brief コンストラクタ
+  @param[in] parent 親ウィンドウ
+  @param[in] client クライアント
 ***************************************************************************/
 ResultWindow::ResultWindow(wxWindow* parent,
                            std::shared_ptr<Client> client)
   : super(parent, wxID_ANY, wxDefaultPosition, 
           Application::Get()->getLayoutRenderer().getSize(WINDOW_SIZE)), 
     client_(client),
-    isResultPoint(false)
+    canPointWrite_(false)
 {
   SetWindowStyle(wxSTAY_ON_TOP);
   Hide();
@@ -100,7 +102,7 @@ void ResultWindow::onReceiveCommand(const ump::Command& command) {
     break;
   case ump::Command::TYPE_AGARI:
     onAgari(command);
-    setIsResultPoint(true);
+    setCanPointWrite(true);
     break;
   case ump::Command::TYPE_POINT:
     onPoint(command);
@@ -109,7 +111,7 @@ void ResultWindow::onReceiveCommand(const ump::Command& command) {
     show();
     break;
   case ump::Command::TYPE_RYUKYOKU:
-    setIsResultPoint(true);
+    setCanPointWrite(true);
     break;
   default:
     break;
@@ -157,8 +159,8 @@ void ResultWindow::show() {
 void ResultWindow::hide() {
   clear();
   player_ = nullptr;
-  addMargin_ = 0;
-  setIsResultPoint(false);
+  posBitmap_ = 0;
+  setCanPointWrite(false);
   super::Hide();
 }
 /***********************************************************************//**
@@ -181,13 +183,13 @@ void ResultWindow::onMouse(wxMouseEvent &event) {
                   getPos(cursor_.pos).y;
     int height = Application::Get()->getLayoutRenderer().getSize(SIZE).y;
     if(cursor >= height) {
-      addMargin_ -= delta;
-      if(addMargin_ < 0) {
-        addMargin_ = 0;
+      posBitmap_ -= delta;
+      if(posBitmap_ < 0) {
+        posBitmap_ = 0;
       }
-      int maxMargin = (cursor - height) * 0.25;
-      if(addMargin_ > maxMargin) {
-        addMargin_ = maxMargin;
+      int maxPosBitmap = (cursor - height) * 0.25;
+      if(posBitmap_ > maxPosBitmap) {
+        posBitmap_ = maxPosBitmap;
       }
     }
   }
@@ -204,7 +206,7 @@ void ResultWindow::onPaint(wxPaintEvent& event) {
                       wxNullColour);
   if(bitmap_) {
     renderer.renderBitmap(LayoutPos(LayoutValue(0, 0, 1), 
-                                    LayoutValue(0, 0, 1 - addMargin_)),
+                                    LayoutValue(0, 0, 1 - posBitmap_)),
                           *bitmap_);
   }
   renderer.endRender();
@@ -244,7 +246,7 @@ void ResultWindow::onAgari(const ump::Command& command) {
   @param[in] command サーバーコマンド
 ***************************************************************************/
 void ResultWindow::onPoint(const ump::Command& command) {
-  if(getIsResultPoint()) {
+  if(getCanPointWrite()) {
     auto& renderer = beginRender(RESULT_RYUUKYUKU);
     auto player = client_->getPlayer(command.getArg(0).c_str());
     wxColour color = isClientPlayer(player) ? *wxCYAN : *wxWHITE;

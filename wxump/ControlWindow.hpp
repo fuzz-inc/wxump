@@ -47,7 +47,7 @@ class ControlWindow
  private:
   std::shared_ptr<Client> client_;
   std::map<int, wxAnyButton*> buttons_;
-  size_t choice_;
+  size_t choice_; /**< 選択した牌番号 */
   
  public:
   ControlWindow(wxWindow* parent,

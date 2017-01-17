@@ -40,7 +40,7 @@ namespace wxump {
 class ControlPlayer : public Player {
   typedef Player super;
  private:
-  size_t cursorIndex_;
+  size_t cursorIndex_; /**< マウスカーソルが指す牌番号 */
   
  public:
   ControlPlayer(std::shared_ptr<Client> client,

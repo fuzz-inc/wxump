@@ -50,12 +50,14 @@ Client::~Client() {
 }
 /***********************************************************************//**
 	@brief 
+  @param[in] command
 ***************************************************************************/
 void Client::replyCommand(const ump::Command& command) {
   super::replyCommand(command, getCommand());
 }
 /***********************************************************************//**
 	@brief コマンド受信
+  @param[in] command
 ***************************************************************************/
 void Client::onReceiveCommand(const ump::Command& command) {
   std::lock_guard<std::mutex> lock(application_->getMutex());
@@ -76,6 +78,7 @@ void Client::onReceiveCommand(const ump::Command& command) {
 }
 /***********************************************************************//**
 	@brief 
+  @param[in] command
 ***************************************************************************/
 void Client::onReplyCommand(const ump::Command& command) {
   wxLogMessage("[UMP] < %s", 

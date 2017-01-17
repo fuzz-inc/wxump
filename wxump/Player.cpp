@@ -58,6 +58,8 @@ static const LayoutValue QUARTER_HEIGHT(0, 0.25, 0);
 static const float DIFF_POINT_SIZE_RATE = 0.7f;
 /***********************************************************************//**
 	@brief コンストラクタ
+  @param[in] client クライアント
+  @param[in] player サーバーで管理しているプレイヤー
 ***************************************************************************/
 Player::Player(std::shared_ptr<Client> client, 
                std::shared_ptr<const ump::mj::Player> player)

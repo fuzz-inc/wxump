@@ -6,5 +6,5 @@ var classwxump_1_1_hai_render =
     [ "renderKawa", "classwxump_1_1_hai_render.html#ac1c2925af9e5ce60b91b75ff16a17e96", null ],
     [ "renderLastSutehai", "classwxump_1_1_hai_render.html#aefc2bcfe2ce597929cbd54379670e964", null ],
     [ "renderMentsu", "classwxump_1_1_hai_render.html#a26b56a209d77ca2f0dada3b0c3d55adb", null ],
-    [ "renderMenzen", "classwxump_1_1_hai_render.html#a5cb7a996a045edfab2c663a728b0237c", null ]
+    [ "renderMenzen", "classwxump_1_1_hai_render.html#a76cca3f9514761b124eb2c30fce43708", null ]
 ];

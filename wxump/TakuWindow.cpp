@@ -49,6 +49,8 @@ static const LayoutValue HAND_WIDTH(SUTEHAI_MAX - 1, 1,
                                     (SUTEHAI_MAX + 5) / 6);
 /***********************************************************************//**
 	@brief コンストラクタ
+  @param[in] parent 親ウィンドウ
+  @param[in] client クライアント
 ***************************************************************************/
 TakuWindow::TakuWindow(wxWindow* parent, std::shared_ptr<Client> client)
   : super(parent, wxID_ANY, wxDefaultPosition,
@@ -133,18 +135,18 @@ void TakuWindow::onUpdate() {
   if(type_ == command.getType() &&
      (command.getType() == ump::Command::TYPE_NAKI_Q ||
      command.getType() == ump::Command::TYPE_SUTEHAI_Q)) {
-    countFlashTime_++;
+    countTime_++;
   }
   else {
-    countFlashTime_ = 0;
+    countTime_ = 0;
   }
   for(auto player : players_) {
-    player->setTime(countFlashTime_);
+    player->setTime(countTime_);
   }
   type_ = command.getType();
 }
 /***********************************************************************//**
-	@brief 特定のマウス操作に反応して通る関数
+	@brief マウス操作時
   @param[in] マウスイベント
 ***************************************************************************/
 void TakuWindow::onMouse(wxMouseEvent& event) {
@@ -198,6 +200,7 @@ void TakuWindow::onGameStart() {
 }
 /***********************************************************************//**
 	@brief アガリ時の処理
+  @param[in] command 受信コマンド（上がったプレイヤー）
 ***************************************************************************/
 void TakuWindow::onAgari(const ump::Command& command) {
   result_->setPlayer(client_->getPlayer(command.getArg(0).c_str()));
