@@ -33,7 +33,6 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "wxump/Application.hpp"
 #include "wxump/Client.hpp"
 #include "wxump/Conversion.hpp"
-#include "wxump/HaiObject.hpp"
 #include "wxump/HaiRender.hpp"
 #include "wxump/Layout.hpp"
 #include "wxump/LayoutRenderer.hpp"

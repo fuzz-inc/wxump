@@ -49,6 +49,9 @@ class HaiRender {
   {}
   ~HaiRender() = default;
   
+  void renderHai(const LayoutPos& offset,
+                 const ump::mj::Hai* hai) const;
+  
   LayoutPos renderKawa(const LayoutPos& offset,
                        const ump::mj::Kawa& kawa,
                        bool isTurn = false,
@@ -66,6 +69,9 @@ class HaiRender {
   
   LayoutPos renderDora(const LayoutPos& offset,
                        const ump::mj::HaiArray& dora) const;
+  
+ private:
+  bool canClientNaki(const ump::mj::Hai* hai) const;
 
 };
 /***********************************************************************//**

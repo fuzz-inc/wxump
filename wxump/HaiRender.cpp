@@ -51,29 +51,32 @@ LayoutPos HaiRender::renderKawa(const LayoutPos& offset,
                                 size_t alpha) const {
   assert(client_);
   LayoutPos pos = offset;
-  auto clientPlayer(client_->getPlayer());
-  std::vector<HaiObject> hais;
   for(size_t i = 0, n = kawa.size(); i < n; i++) {
-    auto& hai = kawa.at(i);
-    auto lastSutehai = client_->getLastSutehai();
-    bool isNakiQ = isTurn && lastSutehai == &hai &&
-                    (clientPlayer->canPon(hai.getHai()) ||
-                     clientPlayer->canChi(hai.getHai()) ||
-                     clientPlayer->canKan(hai.getHai()) ||
-                     clientPlayer->canRon(hai.getHai()));
-    renderer_.renderHai(pos,
-                        HaiObject(hai.getHai()).
-                        setTsumogiri(hai.isTsumogiri()).
-                        setRichi(hai.isRichi()).
-                        setNaki(hai.isNaki() || hai.isRon()).
-                        setNakiQ(isNakiQ).setAlpha(alpha));
-    pos.x += hai.isRichi() ? LayoutValue(0, 1, 0) : LayoutValue(1, 0, 0);
+    auto& sutehai = kawa.at(i);
+    bool isNakiQ = isTurn &&
+                   client_->getLastSutehai() == &sutehai &&
+                   canClientNaki(sutehai.getHai());
+    renderer_.renderHai(pos, HaiObject(sutehai).
+                              setNakiQ(isNakiQ).
+                              setAlpha(alpha));
+    pos.x += sutehai.isRichi()
+              ? LayoutValue(0, 1, 0)
+              : LayoutValue(1, 0, 0);
     if(i % 6 == 5) {
       pos.x.margin += 1;
     }
   }
   pos.x.margin += 1;
   return pos;
+}
+/***********************************************************************//**
+	@brief 牌表示
+  @param[in] offset 描画位置
+  @param[in] hai 牌
+***************************************************************************/
+void HaiRender::renderHai(const LayoutPos& offset,
+                          const ump::mj::Hai* hai) const {
+  renderer_.renderHai(offset, HaiObject(hai));
 }
 /***********************************************************************//**
 	@brief メンツ表示
@@ -111,18 +114,12 @@ LayoutPos HaiRender::renderMenzen(const LayoutPos& offset,
                                   size_t choice) const {
   LayoutPos pos = offset;
   for(size_t i = 0, n = menzen.size(); i < n; i++) {
-    bool isRichiableHai = false;
-    for(auto richiableHai : richiableHais) {
-      if(menzen.at(i) == richiableHai) {
-        isRichiableHai = true;
-        break;
-      }
-    }
+    bool richiableHai = richiableHais.hasSame(menzen.at(i));
     renderer_.renderHai(pos,
                         HaiObject(menzen.at(i)).
-                        setSelect(i == cursor).
-                        setSelected(i == choice).
-                        setRichiable(isRichiableHai));
+                          setSelect(i == cursor).
+                          setSelected(i == choice).
+                          setRichiable(richiableHai));
     pos.x.w += 1;
   }
   pos.x.margin += 1;
@@ -132,7 +129,7 @@ LayoutPos HaiRender::renderMenzen(const LayoutPos& offset,
 	@brief 最後の捨て牌（ロン牌）表示
   @param[in] offset 描画位置
   @param[in] hai ロン牌
-  @return 次の描画位置（左へ）
+  @return 次の描画位置（左）
 ***************************************************************************/
 LayoutPos HaiRender::renderLastSutehai(const LayoutPos& offset,
                                        const ump::mj::Sutehai& hai) const {
@@ -147,6 +144,7 @@ LayoutPos HaiRender::renderLastSutehai(const LayoutPos& offset,
 	@brief ドラ表示
   @param[in] offset 描画位置
   @param[in] dora ドラ牌
+  @return 次の描画位置（左）
 ***************************************************************************/
 LayoutPos HaiRender::renderDora(const LayoutPos& offset,
                                 const ump::mj::HaiArray& dora) const {
@@ -156,6 +154,18 @@ LayoutPos HaiRender::renderDora(const LayoutPos& offset,
     renderer_.renderHai(pos, HaiObject(hai));
   }
   return pos;
+}
+/***********************************************************************//**
+	@brief クライアントが対象の牌で行動できるかチェック
+  @param[in] hai 牌
+  @return 鳴けるならtrue
+***************************************************************************/
+bool HaiRender::canClientNaki(const ump::mj::Hai* hai) const {
+  auto clientPlayer(client_->getPlayer());
+  return (clientPlayer->canPon(hai) ||
+          clientPlayer->canChi(hai) ||
+          clientPlayer->canKan(hai) ||
+          clientPlayer->canRon(hai));
 }
 /***********************************************************************//**
 	$Id$

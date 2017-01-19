@@ -58,7 +58,12 @@ class TakuInfo
   
   void setDora(const ump::Command& command);
   void resetDora();
-  void renderDora(LayoutRenderer& renderer);
+  
+  void renderKyokuNum(LayoutRenderer& renderer,
+                      const LayoutRect& rect) const;
+  void renderRestNum(LayoutRenderer& renderer,
+                     const LayoutRect& rect) const;
+  void renderDora(LayoutRenderer& renderer) const;
   
   static LayoutSize GetSize();
 };

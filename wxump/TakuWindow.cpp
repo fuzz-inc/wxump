@@ -35,7 +35,6 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "wxump/ControlPlayer.hpp"
 #include "wxump/ControlWindow.hpp"
 #include "wxump/Conversion.hpp"
-#include "wxump/HaiObject.hpp"
 #include "wxump/Layout.hpp"
 #include "wxump/LayoutRenderer.hpp"
 #include "wxump/Player.hpp"

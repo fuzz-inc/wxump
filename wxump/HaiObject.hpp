@@ -55,6 +55,13 @@ class HaiObject {
   size_t alpha_ = 0xff;
  public:
   HaiObject(const ump::mj::Hai* hai) : hai_(hai) {}
+  HaiObject(const ump::mj::Sutehai& sutehai)
+    : hai_(sutehai.getHai())
+  {
+    setRichi(sutehai.isRichi());
+    setNaki(sutehai.isNaki() || sutehai.isRon());
+    setTsumogiri(sutehai.isTsumogiri());
+  }
   ~HaiObject() = default;
 
   UMP_GETTER(Hai, hai_);
